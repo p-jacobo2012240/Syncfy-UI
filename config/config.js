@@ -1,0 +1,1 @@
+module.exports.SEED = 'mi-firma-supersecreta';  //Semilla del token
