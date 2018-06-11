@@ -14,8 +14,13 @@ var Usuario = require('../models/usuario');
 //============================
 app.get('/', (req, res, next) =>{
     
+    var desde = req.query.desde || 0; //INIT
+    desde = Number(desde);
+
     Usuario.find({}, 'nombre email img role') //SOLO DESEO VER ESTOS ARGUMENTOS ya no se ve el pssword
-        .exec(     //Ejecutando todo el cuerpo
+    .skip(desde)    
+    .limit(5)
+    .exec(     //Ejecutando todo el cuerpo
         
         (err, usuarios)=>{
 
@@ -26,11 +31,17 @@ app.get('/', (req, res, next) =>{
                 errors: err 
             })
         }//Fin If
+
+        Usuario.count({}, (err, conteo ) =>{
+            res.status(200).json({
+                ok: true,
+                usuarios: usuarios,
+                cantidad_usuarios: conteo
+            });
+
+        });
         
-        res.status(200).json({
-            ok: true,
-            usuarios: usuarios
-        })
+        
     });
         
      
@@ -79,7 +90,7 @@ app.put('/:id', mdAuth.verificaToken ,(req, res) => {
                     });
                 }
 
-                usuarioGuardado.password = ':).. Te la creiste puto';
+                usuarioGuardado.password = ':)..';
     
                     
                 res.status(200).json({
