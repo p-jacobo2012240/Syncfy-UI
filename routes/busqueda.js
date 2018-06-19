@@ -15,14 +15,16 @@ app.get('/todo/:busqueda', (req, res, next) =>{
     //Enviando un arreglo de promesas
     Promise.all( [
         buscarHospitales( busqueda, regex),
-        buscarMedicos( busqueda, regex )
+        buscarMedicos( busqueda, regex),
+        buscarUsuarios( busqueda, regex)
      ])
     .then( respuestas =>{
 
         res.status(200).json({
             ok: true,
             hospitales: respuestas[0],
-            medicos: respuestas[1]
+            medicos: respuestas[1],
+            usuarios: respuestas[2]
         });
     });
 
@@ -40,7 +42,7 @@ function buscarHospitales( busqueda, regex  ){
             }else{
                 resolve(hospitales); //Si todo se carga
             }
-        });
+        }).populate('usuario', 'nombre email') ;
 
     });
 }
@@ -55,8 +57,29 @@ function buscarMedicos( busqueda, regex){
             }else{
                  resolve(medicos)
             }
-        });
+        }).populate('usuario', 'nombre email')
+          .populate('hospital');
     });
+}
+
+
+//Buscando por dos parametros paralelamente
+function buscarUsuarios( busqueda, regex  ){
+    
+    return new Promise( (resolve, reject)=>{
+
+        Usuario.find()
+            .or([{ 'nombre': regex }, {'email': regex }])
+            .exec( (err, usuarios)=>{
+
+                if(err){
+                    reject('No se pudo encontraar', err);
+                }else{
+                    resolve(usuarios);
+                }   
+
+            });
+    }); 
 }
 
 
