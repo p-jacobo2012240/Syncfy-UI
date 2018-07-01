@@ -13,6 +13,7 @@ app.get('/:tipo/:img', (req, res, next) =>{
     var pathImagen = path.resolve( __dirname,  `../uploads/${ tipo }/${ img }`)
 
     //Si esta no existiese
+    //Para probar El FastForward
 
     if( fs.existsSync( pathImagen)){
         res.sendFile( pathImagen);
