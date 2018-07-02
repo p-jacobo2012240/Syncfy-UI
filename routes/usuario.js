@@ -110,7 +110,7 @@ app.put('/:id', mdAuth.verificaToken ,(req, res) => {
 //=============================
 //Insertar Un Usuario
 //=============================
-app.post('/', mdAuth.verificaToken ,(req, res) =>{
+app.post('/', /*AQUI EL MDAUTH*/  (req, res) =>{   //Quitado Para Mientras  |  mdAuth.verificaToken,
 
     var body = req.body;
 
