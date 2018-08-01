@@ -196,13 +196,14 @@ app.post('/', (req, res) => {
                   ];
         
                   //console.log('Hola soy el Menu', ROL);
-        
+                  
+                  //Lo necesario del dia de hoy 
+                  
                   if (ROL === 'ADMIN_ROLE') {
                     menu[1].submenu.unshift({  titulo: 'Usuarios', url: '/usuarios' });
                 }
         
                 return menu;
-        
             }
 
 
