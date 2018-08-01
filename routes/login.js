@@ -161,7 +161,8 @@ app.post('/', (req, res) => {
                 ok: true,
                 usuario: usuarioDB,
                 token: token,
-                id: usuarioDB._id
+                id: usuarioDB._id,
+                menu: obtenerMenu( usuarioDB.role )
             });
     
         })

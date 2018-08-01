@@ -20,7 +20,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 let urlDB;
 
 if (process.env.NODE_ENV === 'dev') {
-    urlDB = 'mongodb://localhost:27017/hospitalDB';
+    urlDB = 'mongodb://localhost:27017/steam-v1';
 } else {
     urlDB = 'mongodb://pablo:jswuupa98@ds141661.mlab.com:41661/steam';
 }
