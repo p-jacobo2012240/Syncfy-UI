@@ -1,3 +1,4 @@
+require('./config/config');
 //REQUIES
 var express = require('express');
 var mongoose = require('mongoose');
@@ -33,7 +34,7 @@ app.use(bodyParser.json())
 
 
 //INIT de la base de datos
-mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res) => {
+mongoose.connection.openUri(process.env.URLDB, (err, res) => {
     
         if (err) throw err;
     
@@ -53,7 +54,7 @@ app.use('/img', imagenesRoutes);
 app.use('/', appRoutes);
 
 //Escuchando
-app.listen(3000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log('Express server en puerto 3000: \x1b[32m%s\x1b[0m', 'online');
 });
 
