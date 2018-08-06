@@ -13,6 +13,7 @@ var medicoRoutes = require('./routes/medico');
 var busquedaRoutes = require('./routes/busqueda');
 var uploadRoutes = require('./routes/upload');
 var imagenesRoutes = require('./routes/imagenes');
+var actividadRoute = require('./routes/actividad');
 
 //INIT
 var app = express();
@@ -51,6 +52,7 @@ app.use('/medico', medicoRoutes);
 app.use('/busqueda', busquedaRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/img', imagenesRoutes);
+app.use('/actividad', actividadRoute);
 app.use('/', appRoutes);
 
 //Escuchando
