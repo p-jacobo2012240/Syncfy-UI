@@ -13,7 +13,7 @@ var eventoSchema = new Schema({
         type: Schema.Types.ObjectId, ref: 'Usuario',	required: true 
     },
     actividad: {
-        type: Schema.Types.ObjectId, ref: 'Actividad', required: true    
+        type: Schema.Types.ObjectId, ref: 'Actividad', required: false    
     }
 
 }, {collection: 'eventos'});

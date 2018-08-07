@@ -14,6 +14,7 @@ var busquedaRoutes = require('./routes/busqueda');
 var uploadRoutes = require('./routes/upload');
 var imagenesRoutes = require('./routes/imagenes');
 var actividadRoute = require('./routes/actividad');
+var eventoRoute = require('./routes/evento');
 
 //INIT
 var app = express();
@@ -53,6 +54,7 @@ app.use('/busqueda', busquedaRoutes);
 app.use('/upload', uploadRoutes);
 app.use('/img', imagenesRoutes);
 app.use('/actividad', actividadRoute);
+app.use('/evento', eventoRoute);
 app.use('/', appRoutes);
 
 //Escuchando

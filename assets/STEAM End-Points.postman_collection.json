@@ -6,15 +6,12 @@
 	},
 	"item": [
 		{
-			"_postman_id": "73cb3d6b-d2cc-4cb6-90ac-de20e129cb56",
+			"_postman_id": "8061c1f4-ae9d-4b10-aaff-b394941afbfd",
 			"name": "Usuario: Obtener todos los usuarios",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/usuario?desde=5",
 					"host": [
@@ -36,8 +33,8 @@
 			"response": []
 		},
 		{
-			"_postman_id": "303f09e8-e24f-49b8-bdf3-7f82e8fba96e",
-			"name": "Usuario: Insertar una coleccion en DB",
+			"_postman_id": "29807819-6980-4b4b-821b-74dc546701dd",
+			"name": "Usuario: Insertar un nuevo Usuario",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -81,12 +78,12 @@
 						"usuario"
 					]
 				},
-				"description": "Insertar Un Usuario"
+				"description": "Este END-POINT Inserta un nuevo registro"
 			},
 			"response": []
 		},
 		{
-			"_postman_id": "6b8a0fe5-e549-4022-ba7d-c9dfdf3f68b4",
+			"_postman_id": "cef2a0e7-105f-47d1-b38e-09541f7735dc",
 			"name": "Usuario: Actualizar Usuario",
 			"request": {
 				"method": "PUT",
@@ -132,15 +129,12 @@
 			"response": []
 		},
 		{
-			"_postman_id": "f9ff7381-8663-4aaf-b442-36cff8a6075d",
+			"_postman_id": "78fdbfa4-07ad-4fd1-8f7a-a0795d5cf472",
 			"name": "Usuario: Borrar Usuario",
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/usuario/5b14828afda3ce194cb0f3ac",
 					"host": [
@@ -157,7 +151,7 @@
 			"response": []
 		},
 		{
-			"_postman_id": "f62f6ca9-de60-4ab9-ae19-183050584d5f",
+			"_postman_id": "6064a3bd-1262-44b0-b149-98e5a4ca3742",
 			"name": "Usuario: Login",
 			"request": {
 				"method": "POST",
@@ -197,15 +191,12 @@
 			"response": []
 		},
 		{
-			"_postman_id": "2981a2b3-a1a7-43e1-bcab-978b9b3e3a3c",
+			"_postman_id": "c1f3326e-6c80-4257-afb0-db281e40a903",
 			"name": "Hospital: Obtener todos los Hospitales",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/hospital",
 					"host": [
@@ -221,7 +212,7 @@
 			"response": []
 		},
 		{
-			"_postman_id": "212c823f-fda8-4864-bdff-29f569861573",
+			"_postman_id": "05e685dd-fe56-4a9f-b5b0-6bd8624b2e83",
 			"name": "Hospital: Insertar Un Hospital",
 			"request": {
 				"method": "POST",
@@ -262,7 +253,7 @@
 			"response": []
 		},
 		{
-			"_postman_id": "ccf1b859-527e-4139-97d4-dd9806cf0895",
+			"_postman_id": "451b1747-c943-4fff-8338-bbc095904347",
 			"name": "Hospital: Actualizar un Hospital",
 			"request": {
 				"method": "PUT",
@@ -304,15 +295,12 @@
 			"response": []
 		},
 		{
-			"_postman_id": "e1661ff2-eccc-4e68-a39e-51224b5a7430",
+			"_postman_id": "43f540b7-711c-4e37-b1c6-ad0dd3f05ee4",
 			"name": "Hospital: Eliminar un Hospital",
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/hospital/5b1dab1b2596801e2040cc5e?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJBRE1JTl9ST0xFIiwiX2lkIjoiNWIxNGFjZTUzZDk0NDkyMTgwODM1MGFiIiwibm9tYnJlIjoiUGFibG8gRGFuaWVsIiwiZW1haWwiOiJwYWJsb2phY29ibzE5OThAZ21haWwuY29tIiwicGFzc3dvcmQiOiI6KS4uLnB0byIsIl9fdiI6MH0sImlhdCI6MTUyODY3MDUwNywiZXhwIjoxNTI4Njg0OTA3fQ.a8x3BQIPbU0y6j2sR0CdZQp_04vusPX6TPPsbJhlf54",
 					"host": [
@@ -335,7 +323,7 @@
 			"response": []
 		},
 		{
-			"_postman_id": "0a29e1c0-cd80-4545-891b-05a338293313",
+			"_postman_id": "3a8a39d2-43d9-4d0e-9880-105098a1cb0c",
 			"name": "Medico: Insertar un medico",
 			"request": {
 				"method": "POST",
@@ -381,15 +369,12 @@
 			"response": []
 		},
 		{
-			"_postman_id": "ba59155d-337e-429f-8d9f-7cfd20cf1a42",
+			"_postman_id": "6a27b78e-7c3e-4af0-b960-c0fc3f46a403",
 			"name": "Medico: Obtener todos los medicos",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/medico",
 					"host": [
@@ -405,7 +390,7 @@
 			"response": []
 		},
 		{
-			"_postman_id": "088d3e56-3c99-49d8-a635-53a4e153f7ab",
+			"_postman_id": "ae5061f4-fd99-480e-9d1f-770744b7683a",
 			"name": "Medico: Actualizar un medico",
 			"request": {
 				"method": "PUT",
@@ -452,15 +437,12 @@
 			"response": []
 		},
 		{
-			"_postman_id": "2d1d17b2-9fbc-4998-83a0-19971b0c5caf",
+			"_postman_id": "977aaaf5-bfd8-4fcf-b853-93d9fb623881",
 			"name": "Medico: Eliminar un Medico",
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/medico/5b1deb115782a42658faf003?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJBRE1JTl9ST0xFIiwiX2lkIjoiNWIxNGFjZTUzZDk0NDkyMTgwODM1MGFiIiwibm9tYnJlIjoiUGFibG8gRGFuaWVsIiwiZW1haWwiOiJwYWJsb2phY29ibzE5OThAZ21haWwuY29tIiwicGFzc3dvcmQiOiI6KS4uLnB0byIsIl9fdiI6MH0sImlhdCI6MTUyODY4NzA5NywiZXhwIjoxNTI4NzAxNDk3fQ.slSIXm4uvUEHA52sTOpj3J5EzHm9UgKjLwfp6qvkQjE",
 					"host": [
@@ -483,15 +465,12 @@
 			"response": []
 		},
 		{
-			"_postman_id": "2b091c58-538b-4337-ab11-8e7d759aca83",
+			"_postman_id": "71a8ecd5-1b0d-44ad-848a-bfa7a6ab0f88",
 			"name": "Busqueda: Hospital, Usuarios, Medicos ",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/busqueda/todo/hosp",
 					"host": [
@@ -509,15 +488,12 @@
 			"response": []
 		},
 		{
-			"_postman_id": "96317235-fa08-41ed-8953-46f1c9970371",
+			"_postman_id": "5fa1fe41-123d-47b4-b9f5-4f03a8b0c428",
 			"name": "Busqueda: Coleccion en especifico",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/busqueda/coleccion/{{ Nombre de coleccion 'usuarios'  ' medicos' ' hospitales'}}/{{Nombre de lo que quiero}}",
 					"host": [
@@ -536,7 +512,7 @@
 			"response": []
 		},
 		{
-			"_postman_id": "4440c521-82e6-4ddf-be45-17aac696603f",
+			"_postman_id": "f28d8730-8999-4556-80ca-dbe177cc8a9a",
 			"name": "Upload General IMG : Medicos, Usuarios, Hospitales",
 			"request": {
 				"method": "PUT",
@@ -568,15 +544,12 @@
 			"response": []
 		},
 		{
-			"_postman_id": "1b84da4e-9278-498f-afbd-c672e3094316",
+			"_postman_id": "d29beae2-9d4d-424b-8c49-17a258445dc3",
 			"name": "Update: Buscar IMG de cada Usuario",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "localhost:3000/img/usuarios/5b1dfe7a7db99304646026c4-669.png",
 					"host": [
@@ -594,7 +567,7 @@
 			"response": []
 		},
 		{
-			"_postman_id": "1117ea0e-5ae3-4acf-9a83-93d756923fa5",
+			"_postman_id": "e072e93f-8527-4e44-9483-1f9f490d02ce",
 			"name": "TOKEN:  GOOGLE (NOI FUNCIONAL)",
 			"request": {
 				"method": "POST",
@@ -630,7 +603,7 @@
 			"response": []
 		},
 		{
-			"_postman_id": "c1efde35-a733-474e-a3ef-b66d6f6e97df",
+			"_postman_id": "8a949f74-2096-40ff-b976-551b4143fd36",
 			"name": "Actividad: Insertar una actividad",
 			"request": {
 				"method": "POST",
@@ -685,21 +658,67 @@
 			"response": []
 		},
 		{
-			"_postman_id": "014d49de-cad2-4bec-bb7d-a216092a492d",
+			"_postman_id": "808c9999-23b7-412e-98dd-6982728439c2",
 			"name": "Actividad: Actualizar una actividad  ",
 			"request": {
 				"method": "PUT",
-				"header": [],
-				"body": {},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre_actividad",
+							"value": "NODEJS RECARGADO",
+							"type": "text"
+						},
+						{
+							"key": "cantidad_puntos",
+							"value": "5000",
+							"type": "text"
+						},
+						{
+							"key": "usuarios_asignados",
+							"value": "5b69de540487112fc0367c82",
+							"sessionValue": "5b69d40fd3ddc51c486972a5",
+							"type": "text"
+						},
+						{
+							"key": "usuario_asignados",
+							"value": "5b69da730487112fc0367c80",
+							"sessionValue": "5b69de540487112fc0367c82",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
 				"url": {
-					"raw": ""
+					"raw": "localhost:3000/actividad/5b69d4c2d3ddc51c486972a6?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNjY0ODg3LCJleHAiOjE1MzM2NzkyODd9.Fwzyw_jexRfC1jD8wsR_doqEtdygvnKvYJypXLVR9No",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"actividad",
+						"5b69d4c2d3ddc51c486972a6"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNjY0ODg3LCJleHAiOjE1MzM2NzkyODd9.Fwzyw_jexRfC1jD8wsR_doqEtdygvnKvYJypXLVR9No"
+						}
+					]
 				},
 				"description": "Este END-POINT Actualiza una actividad "
 			},
 			"response": []
 		},
 		{
-			"_postman_id": "18bfbd95-7004-48ff-9e11-43576ee90625",
+			"_postman_id": "77a053f6-3830-4d9a-88c6-fcef64382546",
 			"name": "Actividad: Obtener toda la actividad",
 			"request": {
 				"method": "GET",
@@ -716,6 +735,82 @@
 					]
 				},
 				"description": "Este END-POINT Obtiene todas las actividades, y tambien de una forma paginada de 5 en 5 mandandole el parametro \"?desde=5\"\n\n\n"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "004ec2ea-1a16-484d-8629-805b48da172a",
+			"name": "Evento: Obtener eventos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/evento",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"evento"
+					]
+				},
+				"description": "Este END-PONT Devuelve todos los eventos de una manera general o paginada atravez del parametro opcional \"?desde=5\""
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "1d4d37c2-1ae5-4098-95ff-86c3733f3e00",
+			"name": "Evento: Insertar una nuevo evento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre_evento",
+							"value": "Charla sobre LARAVEL 5",
+							"sessionValue": "Charla sobre LARAVEL 5",
+							"type": "text"
+						},
+						{
+							"key": "fecha",
+							"value": "7/08/2018",
+							"sessionValue": "7/08/2018",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"sessionValue": null,
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/evento?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNjc2ODE2LCJleHAiOjE1MzM2OTEyMTZ9.AxIdAwSMy8cSr00zcooIOl8gccp2OsxpsrbkPewjL8g",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"evento"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNjc2ODE2LCJleHAiOjE1MzM2OTEyMTZ9.AxIdAwSMy8cSr00zcooIOl8gccp2OsxpsrbkPewjL8g"
+						}
+					]
+				},
+				"description": "Este END-POINT Inserta un nuevo documento con los atributos de un evento"
 			},
 			"response": []
 		}

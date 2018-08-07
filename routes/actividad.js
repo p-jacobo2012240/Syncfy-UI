@@ -110,7 +110,7 @@ app.put('/:id', mdAuth.verificaToken, (req, res) =>{
        actividad.usuario = req.usuario._id;
        actividad.usuarios_asignados = body.usuarios_asignados;
 
-       medico.save( (err, actividadGuardada ) =>{
+       actividad.save( (err, actividadGuardada ) =>{
         
         if(err){
             return res.status(400).json({
@@ -132,15 +132,15 @@ app.put('/:id', mdAuth.verificaToken, (req, res) =>{
 
 })//Fin de PUT
 
-//============================
-//Eliminar todos los Medicos
-//============================
+/*===================================
+  |  Eliminar todas las actividades |  
+  ===================================*/
 
 app.delete('/:id', mdAuth.verificaToken, (req, res)=>{
 
     var id = req.params.id;
 
-    Medico.findByIdAndRemove(id, (err, actividadBorrada) => {
+    Actividad.findByIdAndRemove(id, (err, actividadBorrada) => {
 
         if(err){
             return res.status(500).json({

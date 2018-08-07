@@ -6,7 +6,7 @@ app.get('/', (req, res, next) =>{
     
         res.status(200).json({
             ok: true,
-            mensage: 'Peticion correcta' 
+            mensage: 'Hola!!! - Peticion Exitosa' 
         })
 });
 
