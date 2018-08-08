@@ -140,7 +140,7 @@ app.delete('/:id', (req, res) =>{
         if(err){
             return res.status(500).json({
                 ok: false,
-                mensaje: 'Hospital Eliminado',
+                mensaje: 'Hospital no Eliminado',
                 errors: err
             });
         }
@@ -157,11 +157,7 @@ app.delete('/:id', (req, res) =>{
             ok: true,
             hospital: hospitalBorrado
         });
-
-
     });//Fin del Buscar y Eliminar  
-
-
 });//Fin de DELETE
 
 

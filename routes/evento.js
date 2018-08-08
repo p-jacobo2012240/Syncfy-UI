@@ -50,6 +50,56 @@ app.get('/', ( req, res, next ) =>{
 /*===========================
   |   Actualizar un evento  |  
   =========================== */
+app.put('/:id', (req, res)=>{
+
+    var id = id.params.id;
+    var body = req.body;
+
+    Evento.findById( id, ( err, evento )=>{
+
+        if(err){
+            return res.status(500).json({
+                ok: false,
+                mensaje: 'error de base de datos',
+                errors: err
+            });
+        }
+
+        if(!evento){
+            return res.status(400).json({
+                ok: true,
+                mensaje: 'la actividad con el:'+ id + 'no existe',
+                errors: { message: 'La actividad no existe o el id es incorrecto'} 
+            });
+        }
+
+        /*Todo el cuerpo del eelemento*/
+
+
+        evento.save( (err, eventoGuardado )=>{
+
+            if(err){
+                return res.status(400).json({
+                    ok: false,
+                    mensaje: 'el evento no pudo ser actualizado',
+                    errors: err
+                });
+            }
+
+            res.status(200).json({
+                ok: true,
+                mensaje: 'El evento se ha actualizado correctamente',
+                errors: err
+            });
+
+        });
+
+    });
+
+});
+
+
+
 
 /*============================
   |    Insertar un evento    |  
@@ -86,6 +136,40 @@ app.post('/', mdAuth.verificaToken,  ( req, res)=>{
 
 });//Fin de insertar un nuevo evento
 
+
+/*====================================
+  |      Eliminar un evento          |  
+  ====================================*/ 
+
+  app.delete('/:id', (req, res)=>{
+
+    var id = req.params.id;
+
+    Evento.findByIdAndRemove(id, (err, eventoEliminado)=>{
+        
+        if(err){
+            return res.status(500).json({
+                ok: false,
+                mensaje: 'El evento no pudo ser eliminado',
+                errors: err
+            });
+        }
+
+        if(!eventoEliminado){
+            return res.status(400).json({
+                ok: true,
+                mensaje: 'El evento con el id no existe o no fue encontrado',
+                errors: { message: 'No fue encontrado ese medico' }
+            });
+        }
+        
+        res.status(200).json({
+            ok: true, 
+            mensaje: 'EL EVENTO FUE ELIMINADO CORRECTAMENTE',
+            evento: eventoEliminado
+        });                                
+    });
+});
 
 
 module.exports  = app;
