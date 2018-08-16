@@ -6,8 +6,8 @@ var fs = require('fs');  //FileSystem NODEJS
 var app = express(); 
 
 var Usuario = require('../models/usuario');
-var Medico = require('../models/medico');
-var Hospital = require('../models/hospital');
+var Actividad = require('../models/actividad');
+var Evento = require('../models/evento');
 // default options
 app.use(fileUpload());
 
@@ -19,7 +19,7 @@ app.put('/:tipo/:id', (req, res, next) =>{
 
     //Tipos permitidos
 
-    var tiposPermitidos = ['hospitales', 'medicos', 'usuarios'];
+    var tiposPermitidos = ['actividades', 'eventos', 'usuarios'];
 
     if( tiposPermitidos.indexOf( tipo) < 0){
         return res.status(400).json({

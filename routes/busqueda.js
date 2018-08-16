@@ -2,8 +2,8 @@ var express = require('express');
 
 var app = express();
 
-var Hospital = require('../models/hospital');
-var Medico = require('../models/medico');
+var Actividad = require('../models/actividad');
+var Evento = require('../models/evento');
 var Usuario = require('../models/usuario');
 
 
@@ -25,18 +25,18 @@ app.get('/coleccion/:tabla/:busqueda', (req, res)=>{
             promesa = buscarUsuarios(busqueda, regex);
         break;
 
-        case 'medicos':
-            promesa = buscarMedicos(busqueda, regex);
+        case 'evento':
+            promesa = buscarEvento(busqueda, regex);
         break;
 
-        case 'hospitales':
-            promesa = buscarHospitales(busqueda, regex);
+        case 'actividad':
+            promesa = buscarActividad(busqueda, regex);
         break;
 
         default:
         return res.status(400).json({
             ok: false,
-            mensaje: 'Los tipos de busqueda sólo son: usuarios, medicos y hospitales',
+            mensaje: 'Los tipos de busqueda sólo son: usuarios, evento y actividades',
             error: { message: 'Tipo de tabla/coleccion no válido' }
         });
 
@@ -64,16 +64,16 @@ app.get('/todo/:busqueda', (req, res, next) =>{
 
     //Enviando un arreglo de promesas
     Promise.all( [
-        buscarHospitales( busqueda, regex),
-        buscarMedicos( busqueda, regex),
+        buscarActividad( busqueda, regex),
+        buscarEvento( busqueda, regex),
         buscarUsuarios( busqueda, regex)
      ])
     .then( respuestas =>{
 
         res.status(200).json({
             ok: true,
-            hospitales: respuestas[0],
-            medicos: respuestas[1],
+            evento: respuestas[0],
+            actividad: respuestas[1],
             usuarios: respuestas[2]
         });
     });
@@ -82,7 +82,9 @@ app.get('/todo/:busqueda', (req, res, next) =>{
 });
 
 
-function buscarHospitales( busqueda, regex  ){
+function buscarActividad( busqueda, regex  ){
+
+    //Componer el cuerpo de esto
 
     return new Promise((resolve, reject) =>{
 
@@ -97,8 +99,9 @@ function buscarHospitales( busqueda, regex  ){
     });
 }
 
-function buscarMedicos( busqueda, regex){
+function buscarEvento( busqueda, regex){
 
+    //Componer el cuerpo de esto
     return new Promise(( resolve, reject )=>{
       
         Medico.find({ nombre: regex }, (err, medicos)=>{
