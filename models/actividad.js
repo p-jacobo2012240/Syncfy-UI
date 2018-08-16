@@ -12,9 +12,6 @@ var actividadSchema = new Schema({
     },
     usuario:  {	 //Usuario que crea la  actividad
         type: Schema.Types.ObjectId,  ref: 'Usuario',	required: true 
-    },
-    usuarios_asignados: {
-        type: Schema.Types.ObjectId, ref: 'Usuario', required: false
     }
 }, { collection: 'actividades' });
 

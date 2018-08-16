@@ -56,7 +56,6 @@ app.post('/', mdAuth.verificaToken, (req, res) =>{
         nombre_actividad: body.nombre_actividad,
         cantidad_puntos: body.cantidad_puntos,
         usuario: req.usuario._id,
-        usuarios_asignados: body.usuarios_asignados,
     });
 
     actividad.save( (err, actividadGuardada)=>{
@@ -108,7 +107,7 @@ app.put('/:id', mdAuth.verificaToken, (req, res) =>{
        actividad.nombre_actividad = body.nombre_actividad,
        actividad.cantidad_puntos = body.cantidad_puntos,
        actividad.usuario = req.usuario._id;
-       actividad.usuarios_asignados = body.usuarios_asignados;
+       //actividad.usuarios_asignados = body.usuarios_asignados;
 
        actividad.save( (err, actividadGuardada ) =>{
         
