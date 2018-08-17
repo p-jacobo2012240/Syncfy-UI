@@ -191,17 +191,28 @@ app.post('/', (req, res) => {
                              //{ titulo: 'Hospitales', url: '/hospitales' },
                              //{ titulo: 'Médicos', url: '/medicos' }
                       ]
+                    },
+                    {
+                        titulo: 'Crear un Evento',
+                        icono: 'fa fa-address-book',
+                            evntmenu: [
+                                //Todas las rutas del menu
+                            ]
                     }
                 
                   ];
         
-                  //console.log('Hola soy el Menu', ROL);
-                  
-                  //Lo necesario del dia de hoy 
+                              
+                  /*== Configuraciones segun el ROL ==*/
+
                   
                   if (ROL === 'ADMIN_ROLE') {
                     menu[1].submenu.unshift({  titulo: 'Usuarios', url: '/usuarios' });
-                }
+                  }
+
+                  if(ROL === 'FACILITADOR_ROLE' | ROL === 'ADMIN_ROLE' ){
+                    menu[2].evntmenu.unshift({ titulo: 'Eventos', url: '/eventos'  });         
+                  }
         
                 return menu;
             }
