@@ -174,7 +174,7 @@ app.post('/', (req, res) => {
                 var menu = [
                     {
                       titulo: 'Principal',
-                      icono: 'mdi mdi-gauge',
+                      icono: 'fa fa-rocket',
                       submenu: [
                         {titulo: 'Dashboard', url: '/dashboard'},
                         {titulo: 'ProgressBar', url: '/progress'},
@@ -193,7 +193,7 @@ app.post('/', (req, res) => {
                       ]
                     },
                     {
-                        titulo: 'Crear un Evento',
+                        titulo: 'Eventos',
                         icono: 'fa fa-address-book',
                             evntmenu: [
                                 //Todas las rutas del menu
@@ -211,7 +211,7 @@ app.post('/', (req, res) => {
                   }
 
                   if(ROL === 'FACILITADOR_ROLE' | ROL === 'ADMIN_ROLE' ){
-                    menu[2].evntmenu.unshift({ titulo: 'Eventos', url: '/eventos'  });         
+                    menu[2].evntmenu.unshift({ titulo: 'Crear Eventos', url: '/eventos'});         
                   }
         
                 return menu;
