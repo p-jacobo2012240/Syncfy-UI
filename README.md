@@ -1,8 +1,10 @@
 
 # API 
 
-# npm start 
-# npm run nodemon
+| Cmd -- Prod   | Cmd -- Dev     | 
+| ------------- |:--------------:| 
+| npm start     | npm run nodemon| 
+|---------------|----------------|
 
 API REST. Construida con Node.Js, Express.Js Como Tecnologias de Back-End. 
 
