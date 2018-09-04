@@ -8,7 +8,7 @@ var jwt = require('jsonwebtoken');
 var mdAuth = require('../middlewares/auth');
 //Modelo de Evento
 var Evento = require('../models/evento');
-
+var usuario = require('../models/usuario'); 
 
 /*=============================== 
   |  Obtener todos los eventos  | 
@@ -45,6 +45,43 @@ app.get('/', ( req, res, next ) =>{
     .populate('usuario', 'nombre_evento fecha actividad ');//Fin de Busqueda 
 
 });//Fin de Obtener todos los eventos
+
+
+/*=============================================
+  |  Obtener los eventos creados por Usuario  | 
+  ============================================= */
+  app.get('/xd/:id', ( req, res)=>{
+
+     var id = req.params.id;
+               
+    Evento.find({}, (err, eventos )=>{
+
+        if( err){
+            return res.status(403).json({
+                ok: true,
+                message: 'no puede continuar',
+                errors: err
+            })
+        }
+
+        if(!eventos){
+            return res.status(400).json({
+                ok: false,
+                message: 'No se encotnro ningun evento asociado al ID:' + id,
+                errors: err 
+            });
+        }
+
+        res.status(200).json({
+            ok: true,
+            message: 'se encontro su resultado',
+            eventos: eventos
+        });
+
+    }).where('usuario').equals( id ) //Dinamicamente  
+    //.where('usuario').equals('5b846f4633786931e82e453d') //Funcionamiento estatico
+    //End-Point localhost:3000/evento/xd/5b846f4633786931e82e453d
+});
 
 
 /*===========================
@@ -170,6 +207,7 @@ app.post('/', mdAuth.verificaToken,  ( req, res)=>{
         });                                
     });
 });
+
 
 
 module.exports  = app;

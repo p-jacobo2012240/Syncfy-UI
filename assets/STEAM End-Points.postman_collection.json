@@ -6,18 +6,16 @@
 	},
 	"item": [
 		{
-			"_postman_id": "fd59825b-1453-49b6-b59a-08627d2d3515",
 			"name": "Usuario: Obtener todos los usuarios",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:3000/usuario?desde=5",
+					"raw": "{{url}}/usuario?desde=5",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"usuario"
 					],
@@ -33,7 +31,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "9c453ab2-185e-45fd-86a0-08d334283280",
 			"name": "Usuario: Insertar un nuevo Usuario",
 			"request": {
 				"method": "POST",
@@ -48,12 +45,12 @@
 					"urlencoded": [
 						{
 							"key": "nombre",
-							"value": "sam",
+							"value": "alan",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "sam@gmail.com",
+							"value": "alan@gmail.com",
 							"type": "text"
 						},
 						{
@@ -69,11 +66,10 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/usuario",
+					"raw": "{{url}}/usuario",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"usuario"
 					]
@@ -83,7 +79,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "ba61338c-d8fc-4e46-a9c8-ae06f944f02d",
 			"name": "Usuario: Actualizar Usuario",
 			"request": {
 				"method": "PUT",
@@ -114,11 +109,10 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/usuario/5b14828afda3ce194cb0f3ac",
+					"raw": "{{url}}/usuario/5b14828afda3ce194cb0f3ac",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"usuario",
 						"5b14828afda3ce194cb0f3ac"
@@ -129,18 +123,16 @@
 			"response": []
 		},
 		{
-			"_postman_id": "4a4be4b9-b93c-45fa-ac29-473481aa7087",
 			"name": "Usuario: Borrar Usuario",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:3000/usuario/5b14828afda3ce194cb0f3ac",
+					"raw": "{{url}}/usuario/5b14828afda3ce194cb0f3ac",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"usuario",
 						"5b14828afda3ce194cb0f3ac"
@@ -151,7 +143,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "5cc84116-5feb-452b-bdd2-0a986b83918b",
 			"name": "Usuario: Login",
 			"request": {
 				"method": "POST",
@@ -166,7 +157,7 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "sam@gmail.com",
+							"value": "alan@gmail.com",
 							"type": "text"
 						},
 						{
@@ -177,11 +168,10 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/login",
+					"raw": "{{url}}/login",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"login"
 					]
@@ -191,18 +181,16 @@
 			"response": []
 		},
 		{
-			"_postman_id": "a66007df-cd65-4a1d-86f8-60aa394b50d6",
 			"name": "Busqueda: Hospital, Usuarios, Medicos ",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:3000/busqueda/todo/hosp",
+					"raw": "{{url}}/busqueda/todo/hosp",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"busqueda",
 						"todo",
@@ -214,7 +202,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "adc84ccb-70e3-43dc-a93e-2198809de49f",
 			"name": "Busqueda: Coleccion en especifico",
 			"request": {
 				"method": "GET",
@@ -238,7 +225,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "2fa246eb-0e06-4af5-b88d-4947d6da093d",
 			"name": "Upload General IMG : Medicos, Usuarios, Hospitales",
 			"request": {
 				"method": "PUT",
@@ -248,17 +234,16 @@
 					"formdata": [
 						{
 							"key": "imagen",
-							"type": "file",
-							"value": ""
+							"value": "",
+							"type": "file"
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/upload/usuarios/5b4436d35565941d9cb59830",
+					"raw": "{{url}}/upload/usuarios/5b4436d35565941d9cb59830",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"upload",
 						"usuarios",
@@ -270,18 +255,16 @@
 			"response": []
 		},
 		{
-			"_postman_id": "451627da-cbd9-435e-812c-6ade2cd0c928",
 			"name": "Update: Buscar IMG de cada Usuario",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:3000/img/usuarios/5b1dfe7a7db99304646026c4-669.png",
+					"raw": "{{url}}/img/usuarios/5b1dfe7a7db99304646026c4-669.png",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"img",
 						"usuarios",
@@ -293,7 +276,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "d6b7bd20-2251-457b-b6ee-05ac477ee107",
 			"name": "TOKEN:  GOOGLE (NOI FUNCIONAL)",
 			"request": {
 				"method": "POST",
@@ -329,7 +311,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "911c5029-a8c2-4329-b794-843a4d20e5bb",
 			"name": "Actividad: Insertar una actividad",
 			"request": {
 				"method": "POST",
@@ -345,19 +326,16 @@
 						{
 							"key": "nombre_actividad",
 							"value": "Node Js --Code Practice",
-							"sessionValue": "Internet de las cosas\n",
 							"type": "text"
 						},
 						{
 							"key": "cantidad_puntos",
 							"value": "100",
-							"sessionValue": "100",
 							"type": "text"
 						},
 						{
 							"key": "usuarios_asignados",
 							"value": "5b688c4a549e7f1f2c62f0a2",
-							"sessionValue": "5b688c4a549e7f1f2c62f0a2",
 							"type": "text",
 							"disabled": true
 						}
@@ -384,7 +362,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "2446da92-829d-4c6c-b55b-7e3e07b34249",
 			"name": "Actividad: Actualizar una actividad  ",
 			"request": {
 				"method": "PUT",
@@ -410,13 +387,11 @@
 						{
 							"key": "usuarios_asignados",
 							"value": "5b69de540487112fc0367c82",
-							"sessionValue": "5b69d40fd3ddc51c486972a5",
 							"type": "text"
 						},
 						{
 							"key": "usuario_asignados",
 							"value": "5b69da730487112fc0367c80",
-							"sessionValue": "5b69de540487112fc0367c82",
 							"type": "text",
 							"disabled": true
 						}
@@ -444,18 +419,16 @@
 			"response": []
 		},
 		{
-			"_postman_id": "14105163-e509-4e48-a235-6d95473b4c99",
 			"name": "Actividad: Obtener toda la actividad",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:3000/actividad",
+					"raw": "{{url}}/actividad",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"actividad"
 					]
@@ -465,18 +438,16 @@
 			"response": []
 		},
 		{
-			"_postman_id": "cd10bb36-9f3c-49d4-86cd-8ce6e63f154f",
 			"name": "Evento: Obtener eventos",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:3000/evento",
+					"raw": "{{url}}/evento",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"evento"
 					]
@@ -486,7 +457,6 @@
 			"response": []
 		},
 		{
-			"_postman_id": "896c1f08-d6e8-4c14-993a-a1cb8a44cd6f",
 			"name": "Evento: Insertar una nuevo evento",
 			"request": {
 				"method": "POST",
@@ -502,37 +472,33 @@
 						{
 							"key": "nombre_evento",
 							"value": "Charla sobre LARAVEL 5",
-							"sessionValue": "Charla sobre LARAVEL 5",
 							"type": "text"
 						},
 						{
 							"key": "fecha",
 							"value": "7/08/2018",
-							"sessionValue": "7/08/2018",
 							"type": "text"
 						},
 						{
 							"key": "",
 							"value": "",
-							"sessionValue": null,
 							"type": "text",
 							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "localhost:3000/evento?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNjc2ODE2LCJleHAiOjE1MzM2OTEyMTZ9.AxIdAwSMy8cSr00zcooIOl8gccp2OsxpsrbkPewjL8g",
+					"raw": "{{url}}/evento?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1Yjg0NzI5NjNlYjI2YjAwMTRmNzk4M2UiLCJub21icmUiOiJhbGFuIiwiZW1haWwiOiJhbGFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieGQiLCJfX3YiOjB9LCJpYXQiOjE1MzU0MDY4MDIsImV4cCI6MTUzNTQyMTIwMn0.GynqhsP0uKR4fL99nVmqQHeUBEz5wQfnp-boO38xyHM",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"evento"
 					],
 					"query": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNjc2ODE2LCJleHAiOjE1MzM2OTEyMTZ9.AxIdAwSMy8cSr00zcooIOl8gccp2OsxpsrbkPewjL8g"
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1Yjg0NzI5NjNlYjI2YjAwMTRmNzk4M2UiLCJub21icmUiOiJhbGFuIiwiZW1haWwiOiJhbGFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieGQiLCJfX3YiOjB9LCJpYXQiOjE1MzU0MDY4MDIsImV4cCI6MTUzNTQyMTIwMn0.GynqhsP0uKR4fL99nVmqQHeUBEz5wQfnp-boO38xyHM"
 						}
 					]
 				},
@@ -541,18 +507,16 @@
 			"response": []
 		},
 		{
-			"_postman_id": "4da771eb-ca39-464a-bf92-6731e659164a",
 			"name": "Actividad: Eliminar una actividad",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:3000/actividad/5b69d4c2d3ddc51c486972a6?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNzU5MTE5LCJleHAiOjE1MzM3NzM1MTl9.whqAfBFHgZkqs5Woo0dS-sbFyK1B_srZncLXg7EsUiw",
+					"raw": "{{url}}/actividad/5b69d4c2d3ddc51c486972a6?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNzU5MTE5LCJleHAiOjE1MzM3NzM1MTl9.whqAfBFHgZkqs5Woo0dS-sbFyK1B_srZncLXg7EsUiw",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"actividad",
 						"5b69d4c2d3ddc51c486972a6"
@@ -565,6 +529,28 @@
 					]
 				},
 				"description": "Este END-PONT Elimina una actividad por medio de un parametro ID seguido del token"
+			},
+			"response": []
+		},
+		{
+			"name": "Evento: Relacionado Cada Usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/evento/xd/5b846f4633786931e82e453d",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"evento",
+						"xd",
+						"5b846f4633786931e82e453d"
+					]
+				},
+				"description": "Este End-Point Obtiene todos los eventos relacionados hacia un usuario por medio de su Id\n\nlocalhost:3000/evento/xd/5b8efe1874b85532ccd2682d"
 			},
 			"response": []
 		}
