@@ -80,7 +80,7 @@ app.get('/', ( req, res, next ) =>{
 
     }).where('usuario').equals( id ) //Dinamicamente  
     //.where('usuario').equals('5b846f4633786931e82e453d') //Funcionamiento estatico
-    //End-Point localhost:3000/evento/xd/5b846f4633786931e82e453d
+    //End-Point localhost:3000/evento/xd/5b846f4633786931e82e453d 
 });
 
 
