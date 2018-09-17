@@ -142,7 +142,7 @@ app.put('/:id', (req, res)=>{
   |    Insertar un evento    |  
   ============================ */
 
-app.post('/', mdAuth.verificaToken,  ( req, res)=>{
+app.post('/', mdAuth.verificaToken, ( req, res)=>{
 
     var body = req.body;
 

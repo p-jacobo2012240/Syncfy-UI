@@ -83,6 +83,27 @@ app.put('/:tipo/:id', (req, res, next) =>{
 
 });
 
+/*=============================== 
+  |   Carga Masiva de un Excel  |
+  ===============================*/
+
+app.post('/:excel/:id_data', (req, res , next)=>{
+
+    let excel = req.params.excel;
+    let id_data = req.params.id_data;
+
+    let extensiones_Permit = ['.xlsx']; //Revisar si hay mass extensiones
+
+    if(!req.files){
+        return res.status(400).json({
+            ok: false,
+            message: 'Debe cargar algo'
+        });
+    }
+    //Falta delimitar los arhivos, asiganrles un nuevo nombre, talvez validar tipos, y crear END-POINT
+
+});
+
 
 function subirPorTipo(tipo, id, nombreArchivo , res ){ //res porque la respuesta debe ser un json desde aqui
 
