@@ -83,6 +83,37 @@ app.get('/', ( req, res, next ) =>{
     //End-Point localhost:3000/evento/xd/5b846f4633786931e82e453d 
 });
 
+/*=========================================
+  |   Otener las actividades Asoc IdEvnt  |
+  ========================================= */
+app.get('/actividades/:idx', (req, res)=>{
+
+    var idx = req.params.idx;
+
+    Evento.find({}, (err, actEvnt)=>{
+        if(err){
+            return res.status(403).json({
+                ok: false,
+                message: 'error de DB ',
+                errorss: err
+            });
+        }
+
+        if(!actEvnt){
+            return res.status(400).json({
+                ok: false,
+                message: 'No se envio/obtuvo lo esperado'
+            });
+        }
+
+        res.status(200).json({
+            ok: true,
+            message: 'Peticion Exxitosa',
+            ActRelEvent: actEvnt
+        });
+    }).where('actividad').equals(idx);
+});
+
 
 /*===========================
   |   Actualizar un evento  |  
