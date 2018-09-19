@@ -87,7 +87,7 @@ app.put('/:tipo/:id', (req, res, next) =>{
   |   Carga Masiva de un Excel  |
   ===============================*/
 
-app.post('/:excel/:id_data', (req, res , next)=>{
+app.post('/excel/:id_data', (req, res , next)=>{
 
     let excel = req.params.excel;
     let id_data = req.params.id_data;
@@ -101,6 +101,32 @@ app.post('/:excel/:id_data', (req, res , next)=>{
         });
     }
     //Falta delimitar los arhivos, asiganrles un nuevo nombre, talvez validar tipos, y crear END-POINT
+    let archivo = req.files.documento;
+    let nombreSegmentado = archivo.name.split('.');
+    let extensionArchivo = nombreSegmentado[nombreSegmentado.length -1];
+
+    //Reasignando un nombre en funcion del tiempo
+    let nombreArchivo =  `${ id_data }-${ new Date().getMilliseconds()}.${ extensionArchivo }`;    
+    
+    //Renderizar luego a una ruta donde se cargen todos esos datos
+    let path = `./uploads/${ nombreArchivo }`;
+
+    archivo.move( path, err=>{
+        if(err){
+            return res.status(400).json({
+                ok: false,
+                message: 'error al intentar mover el archivo',
+                errors: err
+            });
+        }
+
+        //Solo para probar mientras
+        res.status(200).json({
+            ok: true,
+            message: 'El archivo se cargo con exito',
+            path
+        });
+    });
 
 });
 
