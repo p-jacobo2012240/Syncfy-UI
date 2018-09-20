@@ -45,6 +45,29 @@ app.get('/', (req, res, next) =>{
 });//Fin GET
 
 
+
+//END-POINT SIN PAGINAR
+//{{url}}/actividad/sin_paginar
+app.get('/sin_paginar', (req, res)=>{
+
+    Actividad.find({}, (err, results)=>{
+        if(err){
+            return res.status(400).json({
+                ok: false,
+                message: 'error de db',
+                results
+            });
+        }
+
+        res.status(200).json({
+            ok: true,
+            message: 'consulta exitosa',
+            results
+        });
+    });
+});
+
+
 /*=================================
   |      Insertar Actividades     |
   =================================*/
