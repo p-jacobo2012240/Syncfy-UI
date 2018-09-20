@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "22924abe-6a09-4a01-aa9c-19542b018499",
+		"_postman_id": "6e26ab18-aeeb-4fbb-9d2a-28117a44ca20",
 		"name": "STEAM End-Points",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,7 +10,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{url}}/usuario?desde=5",
 					"host": [
@@ -127,7 +130,10 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{url}}/usuario/5b14828afda3ce194cb0f3ac",
 					"host": [
@@ -157,7 +163,7 @@
 					"urlencoded": [
 						{
 							"key": "email",
-							"value": "alan@gmail.com",
+							"value": "jagap@gmail.com",
 							"type": "text"
 						},
 						{
@@ -185,7 +191,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{url}}/busqueda/todo/hosp",
 					"host": [
@@ -206,7 +215,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "localhost:3000/busqueda/coleccion/{{ Nombre de coleccion 'usuarios'  ' medicos' ' hospitales'}}/{{Nombre de lo que quiero}}",
 					"host": [
@@ -259,7 +271,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{url}}/img/usuarios/5b1dfe7a7db99304646026c4-669.png",
 					"host": [
@@ -423,7 +438,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{url}}/actividad",
 					"host": [
@@ -442,7 +460,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{url}}/evento",
 					"host": [
@@ -471,24 +492,23 @@
 					"urlencoded": [
 						{
 							"key": "nombre_evento",
-							"value": "Charla sobre LARAVEL 5",
+							"value": "Devs Lab Conf",
 							"type": "text"
 						},
 						{
 							"key": "fecha",
-							"value": "7/08/2018",
+							"value": "27/11/2018",
 							"type": "text"
 						},
 						{
-							"key": "",
-							"value": "",
-							"type": "text",
-							"disabled": true
+							"key": "actividad",
+							"value": "5b7503676ede701c9c5f79dc",
+							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{url}}/evento?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1Yjg0NzI5NjNlYjI2YjAwMTRmNzk4M2UiLCJub21icmUiOiJhbGFuIiwiZW1haWwiOiJhbGFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieGQiLCJfX3YiOjB9LCJpYXQiOjE1MzU0MDY4MDIsImV4cCI6MTUzNTQyMTIwMn0.GynqhsP0uKR4fL99nVmqQHeUBEz5wQfnp-boO38xyHM",
+					"raw": "{{url}}/evento?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJBRE1JTl9ST0xFIiwiZ29vZ2xlIjpmYWxzZSwiX2lkIjoiNWI5MGEwM2JjYmM1ZmQyMzEwOWE1MzM4Iiwibm9tYnJlIjoiamFpbWUiLCJlbWFpbCI6ImphZ2FwQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieGQiLCJfX3YiOjB9LCJpYXQiOjE1MzcyNDg4NDYsImV4cCI6MTUzNzI2MzI0Nn0.m3-dDhsCJha5acVv4MFKQdSZ1jUBot8unUId9c0nihY",
 					"host": [
 						"{{url}}"
 					],
@@ -498,7 +518,7 @@
 					"query": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1Yjg0NzI5NjNlYjI2YjAwMTRmNzk4M2UiLCJub21icmUiOiJhbGFuIiwiZW1haWwiOiJhbGFuQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieGQiLCJfX3YiOjB9LCJpYXQiOjE1MzU0MDY4MDIsImV4cCI6MTUzNTQyMTIwMn0.GynqhsP0uKR4fL99nVmqQHeUBEz5wQfnp-boO38xyHM"
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJBRE1JTl9ST0xFIiwiZ29vZ2xlIjpmYWxzZSwiX2lkIjoiNWI5MGEwM2JjYmM1ZmQyMzEwOWE1MzM4Iiwibm9tYnJlIjoiamFpbWUiLCJlbWFpbCI6ImphZ2FwQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieGQiLCJfX3YiOjB9LCJpYXQiOjE1MzcyNDg4NDYsImV4cCI6MTUzNzI2MzI0Nn0.m3-dDhsCJha5acVv4MFKQdSZ1jUBot8unUId9c0nihY"
 						}
 					]
 				},
@@ -511,7 +531,10 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "{{url}}/actividad/5b69d4c2d3ddc51c486972a6?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7InJvbGUiOiJVU0VSX1JPTEUiLCJnb29nbGUiOmZhbHNlLCJfaWQiOiI1YjY5ZGU1NDA0ODcxMTJmYzAzNjdjODIiLCJub21icmUiOiJzYW0iLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJwYXNzd29yZCI6InhkIiwiX192IjowfSwiaWF0IjoxNTMzNzU5MTE5LCJleHAiOjE1MzM3NzM1MTl9.whqAfBFHgZkqs5Woo0dS-sbFyK1B_srZncLXg7EsUiw",
 					"host": [
@@ -537,20 +560,63 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "localhost:3000/evento/xd/5b846f4633786931e82e453d",
+					"raw": "{{url}}/evento/xd/5b90a03bcbc5fd23109a5338",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "3000",
 					"path": [
 						"evento",
 						"xd",
-						"5b846f4633786931e82e453d"
+						"5b90a03bcbc5fd23109a5338"
 					]
 				},
 				"description": "Este End-Point Obtiene todos los eventos relacionados hacia un usuario por medio de su Id\n\nlocalhost:3000/evento/xd/5b8efe1874b85532ccd2682d"
+			},
+			"response": []
+		},
+		{
+			"name": "Evento: Filtrar las actividaddes de los eventos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/evento/actividades/5b7503676ede701c9c5f79dc",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"evento",
+						"actividades",
+						"5b7503676ede701c9c5f79dc"
+					]
+				},
+				"description": "Este End-Point Filtra las actividades resiviendo el id de la actividad en el route de evento.\n\nOriginal\n{{url}}/evento/actividades/5b7503676ede701c9c5f79dc"
+			},
+			"response": []
+		},
+		{
+			"name": "Evento: Eliminar un evento por ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/evento/5b9f385c1bc5f01be8e0e526",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"evento",
+						"5b9f385c1bc5f01be8e0e526"
+					]
+				},
+				"description": "Este End-Point Elimina un evento (Add token in request)\n\nOriginal\n{{url}}/evento/5b9f385c1bc5f01be8e0e526"
 			},
 			"response": []
 		}
