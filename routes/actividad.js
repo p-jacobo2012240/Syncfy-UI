@@ -1,109 +1,110 @@
-var express = require('express');
+const express = require('express')
+const app = express()
 
-var app = express(); 
 
+//Middleweare Auth
+const mdAuth = require('../middlewares/auth')
+const Actividad = require('../models/actividad')
 
-//Middleweare Exportado
-var mdAuth = require('../middlewares/auth');
-
-var Actividad = require('../models/actividad');
-
-/*=================================
-  | Obtener todas las actividades |
-  =================================*/
-
-app.get('/', (req, res, next) =>{
+app.get('/', async(req, res, next) =>{
     
-    //Paginacion de las actividades
-    var desde = req.query.desde || 0;
-    desde = Number(desde);
+    let result
+    let desde = req.query.desde || 0
+    desde = Number(desde)
+    
+    try {    
+        result = await Actividad.find({}, (err, actividades) =>{
+            if(err){
+                re.status(500).json({
+                    ok: false,
+                    mensaje: 'Error de base de datos',
+                    errors: err
+                })
+            }
 
-    Actividad.find({}, (err, actividades) =>{
-
-        if(err){
-            re.status(500).json({
-                ok: false,
-                mensaje: 'Error de base de datos',
-                errors: err
-            });
-        }//Fin if
-
-        Actividad.count({}, (err, conteo)=>{
-            res.status(200).json({
-                ok: true,
-                mensage: 'Peticion correcta - Actividades', 
-                actividades: actividades,
-                cantidad_total: conteo
-            });
-        });
+            Actividad.count({}, (err, conteo)=>{
+                res.status(200).json({
+                    ok: true,
+                    mensage: 'Peticion correcta - Actividades', 
+                    actividades: actividades,
+                    cantidad_total: conteo
+                })
+            })
               
-    }).skip(desde)
-    .limit(5)
-    .populate('usuario', 'nombre_actividad cantidad_puntos  usuarios_asignado')
-    .populate('hospital'); 
+        }).skip(desde)
+        .limit(5)
+        .populate('usuario', 'nombre_actividad cantidad_puntos  usuarios_asignado')
+        .populate('hospital') 
 
-});//Fin GET
+    } catch (e) {
+        return next(e)
+    }
+})
 
 
 
 //END-POINT SIN PAGINAR
 //{{url}}/actividad/sin_paginar
-app.get('/sin_paginar', (req, res)=>{
-
-    Actividad.find({}, (err, results)=>{
-        if(err){
-            return res.status(400).json({
-                ok: false,
-                message: 'error de db',
+app.get('/sin_paginar', async(req, res)=>{
+   
+    let result
+    
+    try {        
+        result = await Actividad.find({}, (err, results)=>{
+            if(err){
+                return res.status(400).json({
+                    ok: false,
+                    message: 'error de db',
+                    results
+                })
+            }
+    
+            res.status(200).json({
+                ok: true,
+                message: 'consulta exitosa',
                 results
-            });
-        }
+            })
+        })
 
-        res.status(200).json({
-            ok: true,
-            message: 'consulta exitosa',
-            results
-        });
-    });
-});
+    } catch (e) {
+        return console.log(e)
+    }
+})
 
 
-/*=================================
-  |      Insertar Actividades     |
-  =================================*/
 
-app.post('/', mdAuth.verificaToken, (req, res) =>{
+app.post('/', mdAuth.verificaToken, async(req, res) =>{
 
-    var body = req.body;
+    let result
+    let body = req.body
 
-    var actividad = new Actividad({
+    let actividad = new Actividad({
         nombre_actividad: body.nombre_actividad,
         cantidad_puntos: body.cantidad_puntos,
         usuario: req.usuario._id,
-    });
+    })
 
-    actividad.save( (err, actividadGuardada)=>{
+    try {
+        result = await actividad.save( (err, actividadGuardada)=>{
+            if(err){
+                return res.status(500).json({
+                    ok: false,
+                    mensaje: 'Error al crear la actividad',
+                    errors: err
+                })
+            }
+    
+            res.status(201).json({
+                ok: true,
+                actividad:  actividadGuardada
+            })
+        })
 
-        if(err){
-            return res.status(500).json({
-                ok: false,
-                mensaje: 'Error al crear la actividad',
-                errors: err
-            });
-        }//Fin If
+    } catch (e) {
+        return console.log(e)
+    }
+})
 
-        res.status(201).json({
-            ok: true,
-            actividad:  actividadGuardada
-        });
-
-    });//Fin del guardar
-
-});//Fin del POST
-
-/*=================================
-  |    Actualizar las actividad   |
-  =================================*/
 
 app.put('/:id', mdAuth.verificaToken, (req, res) =>{
 

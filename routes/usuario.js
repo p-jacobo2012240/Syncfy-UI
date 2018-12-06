@@ -1,51 +1,49 @@
-var express = require('express');
-var bcrypt = require('bcrypt');
+const express = require('express');
+const bcrypt = require('bcrypt');
 
-var app = express(); 
-var jwt = require('jsonwebtoken');
+const app = express(); 
+const jwt = require('jsonwebtoken');
 
-//Middleware Exportado
-var mdAuth = require('../middlewares/auth');
-var Usuario = require('../models/usuario');
+//Middleware 
+const mdAuth = require('../middlewares/auth');
+const Usuario = require('../models/usuario');
 
 
-//============================
-//Obtener todos los usuarios
-//============================
-app.get('/', (req, res, next) =>{
+app.get('/', async(req, res, next) =>{
     
-    var desde = req.query.desde || 0; //INIT
-    desde = Number(desde);
+    let result    
+    let desde = req.query.desde || 0
+    desde = Number(desde)
 
-    Usuario.find({}, 'nombre email img role') //SOLO DESEO VER ESTOS ARGUMENTOS ya no se ve el pssword
-    .skip(desde)    
-    .limit(5)
-    .exec(     //Ejecutando todo el cuerpo
-        
-        (err, usuarios)=>{
-
-        if(err){//Inicio If
-            return  res.status(500).json({
-                ok: false,
-                mensage: 'ERROR DE BASE DE DATOS',
-                errors: err 
+    try {
+        result = await Usuario.find({}, 'nombre email img role')
+        .skip(desde)    
+        .limit(5)
+        .exec(     
+            
+            (err, usuarios)=>{
+    
+            if(err){
+                return  res.status(500).json({
+                    ok: false,
+                    mensage: 'ERROR DE BASE DE DATOS',
+                    errors: err 
+                })
+            }
+    
+            Usuario.count({}, (err, conteo ) =>{
+                res.status(200).json({
+                    ok: true,
+                    usuarios: usuarios,
+                    cantidad_usuarios: conteo
+                })
+    
             })
-        }//Fin If
-
-        Usuario.count({}, (err, conteo ) =>{
-            res.status(200).json({
-                ok: true,
-                usuarios: usuarios,
-                cantidad_usuarios: conteo
-            });
-
-        });
-        
-        
-    });
-        
-     
-});
+        })
+    } catch (e) {
+        return console.log(e)
+    }
+})
 
 
 //=============================
@@ -105,78 +103,75 @@ app.put('/:id', mdAuth.verificaToken ,(req, res) => {
     });
 
 
+app.post('/', async(req, res) =>{ 
 
+    let result
+    let body = req.body;
 
-//=============================
-//Insertar Un Usuario
-//=============================
-app.post('/', /*AQUI EL MDAUTH*/  (req, res) =>{   //Quitado Para Mientras  |  mdAuth.verificaToken,
-
-    var body = req.body;
-
-    var usuario = new Usuario({
+    let usuario = new Usuario({
         nombre: body.nombre,
         email: body.email,
-        password: bcrypt.hashSync(body.password, 10 ), //Encriptando
+        password: bcrypt.hashSync(body.password, 10 ), 
         img: body.img,
         role: body.role
-    });
+    })
 
-    usuario.save( (err, usuarioGuardado) => {
-
-        if(err){//Inicio If
+    try {
+        result = await usuario.save( (err, usuarioGuardado) => {
+            if(err){
             return  res.status(500).json({
                 ok: false,
                 mensage: 'ERROR AL INSERTAR EL USUARIO', 
                 errors: err
             })
-        }//Fin If
-
+        }
+    
         res.status(201).json({
             ok: true,
             usuario: usuarioGuardado,
             usuariotoken: req.usuario
-        });
+        })
+    })
 
-    });
-
-});
-
-
-//=============================
-//Eliminar Un Usuario
-//=============================
+    } catch (e) {
+        return console.log(e)    
+    }
+})
 
 
-app.delete('/:id', mdAuth.verificaToken ,( req, res)=>{
+app.delete('/:id', mdAuth.verificaToken, async( req, res)=>{
 
-    var id = req.params.id; //Si son Id son parametros
+    let result
+    let id = req.params.id
 
-    Usuario.findByIdAndRemove( id, (err, usuarioBorrado) =>{   //Necesariamente resiviendo 3 parametros
-
-        if(err){
-            return res.status(500).json({
-                ok: false,
-                mensage: 'Usuario eliminado',
-                errors: err
-
-            });
-        }//Fin del if
-
-        if( !usuarioBorrado){
+    try {
+        result = await Usuario.findByIdAndRemove( id, (err, usuarioBorrado) =>{   
+            if(err){
+                return res.status(500).json({
+                    ok: false,
+                    mensage: 'Usuario eliminado',
+                    errors: err
+    
+                })
+            }
+    
+            if( !usuarioBorrado){
                 return res.status(400).json({
                     ok: false,
                     mensaje: 'No existe un usuario con ese id',
                     errors: { message: 'No existe un usuario con ese id' }
-                });
-        }//Fin del If
+                })
+            }
+    
+            res.status(200).json({
+                ok: true,
+                usuario: usuarioBorrado
+            })
+        })
 
-        res.status(200).json({
-            ok: true,
-            usuario: usuarioBorrado
-        });
-
-    });
-});
+    } catch (e) {
+        return console.log(e)
+    }
+})
 
 module.exports = app;
