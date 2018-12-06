@@ -1,14 +1,14 @@
-var express = require('express');
-var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
+const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-var SEED = require('../config/config').SEED;
+const SEED = require('../config/config').SEED;
 
-var app = express();                         //Sin express no levanta la instancia
-var Usuario = require('../models/usuario');
+const app = express();                         
+const Usuario = require('../models/usuario');
 
 // Google
-var CLIENT_ID = require('../config/config').CLIENT_ID;
+const CLIENT_ID = require('../config/config').CLIENT_ID;
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(CLIENT_ID);
 
@@ -122,100 +122,99 @@ app.post('/google', async(req, res) => {
 //==================================
 // Login Normal
 //==================================
-app.post('/', (req, res) => {
-    
-        var body = req.body;
-    
-        Usuario.findOne({ email: body.email }, (err, usuarioDB) => {
-    
+app.post('/', async(req, res) => {
+
+    let result
+    let body = req.body;
+
+    try {
+        result = await Usuario.findOne({ email: body.email }, (err, usuarioDB) => {
             if (err) {
                 return res.status(500).json({
                     ok: false,
                     mensaje: 'Error al buscar usuario',
                     errors: err
-                });
-            }//Fin del If
+                })
+            }
     
             if (!usuarioDB) {
                 return res.status(400).json({
                     ok: false,
                     mensaje: 'Credenciales incorrectas - email',
                     errors: err
-                });
-            }//Fin del If
+                })
+            }
     
             if (!bcrypt.compareSync(body.password, usuarioDB.password)) {
                 return res.status(400).json({
                     ok: false,
                     mensaje: 'Credenciales incorrectas - password',
                     errors: err
-                });
-            }//Fin del If
+                })
+            }
     
-            // Se Crear Token!!
-            usuarioDB.password = 'xd'
-            var token = jwt.sign({ usuario: usuarioDB }, SEED , { expiresIn:  14400  });
-
-               
+            usuarioDB.password = 'hck'
+            let token = jwt.sign({ 
+                usuario: usuarioDB 
+            }, SEED, 
+            { expiresIn:  14400  })
+   
             res.status(200).json({
                 ok: true,
                 usuario: usuarioDB,
                 token: token,
                 id: usuarioDB._id,
                 menu: obtenerMenu( usuarioDB.role )
-            });
-    
+            })
         })
-            
-    });
 
-    function obtenerMenu( ROL ){
-        
-                var menu = [
-                    {
-                      titulo: 'Principal',
-                      icono: 'fa fa-rocket',
-                      submenu: [
-                        {titulo: 'Dashboard', url: '/dashboard'},
-                        {titulo: 'ProgressBar', url: '/progress'},
-                        {titulo: 'Graficas', url: '/grafica1'},
-                        {titulo: 'Configuraciones', url: '/account'},
-                        {titulo: 'Promesas', url: '/promesas'}
-                      ]
-                    },
-                    {
-                      titulo: 'Intereses',
-                      icono: 'mdi mdi-folder-lock-open',
-                           submenu: [
-                             //{ titulo: 'Usuarios', url: '/usuarios' }
-                             //{ titulo: 'Hospitales', url: '/hospitales' },
-                             //{ titulo: 'Médicos', url: '/medicos' }
-                      ]
-                    },
-                    {
-                        titulo: 'Eventos',
-                        icono: 'fa fa-address-book',
-                            evntmenu: [
-                                //Todas las rutas del menu
-                            ]
-                    }
-                
-                  ];
-        
-                              
-                  /*== Configuraciones segun el ROL ==*/
-
-                  
-                  if (ROL === 'ADMIN_ROLE') {
-                    menu[1].submenu.unshift({  titulo: 'Usuarios', url: '/usuarios' });
-                  }
-
-                  if(ROL === 'FACILITADOR_ROLE' | ROL === 'ADMIN_ROLE' ){
-                    menu[2].evntmenu.unshift({ titulo: 'Crear Eventos', url: '/eventos'});         
-                  }
-        
-                return menu;
+    } catch (e) {
+        return console.log(e)
+    }
+})
+    
+const obtenerMenu = (ROL)=>{
+    let menu = [
+            {
+              titulo: 'Principal',
+              icono: 'fa fa-rocket',
+              submenu: [
+                {titulo: 'Dashboard', url: '/dashboard'},
+                {titulo: 'ProgressBar', url: '/progress'},
+                {titulo: 'Graficas', url: '/grafica1'},
+                {titulo: 'Configuraciones', url: '/account'},
+                {titulo: 'Promesas', url: '/promesas'}
+              ]
+            },
+            {
+              titulo: 'Intereses',
+              icono: 'mdi mdi-folder-lock-open',
+              submenu: [
+                //{ titulo: 'Usuarios', url: '/usuarios' }
+                //{ titulo: 'Hospitales', url: '/hospitales' },
+                //{ titulo: 'Médicos', url: '/medicos' }
+              ]
+            },
+            {
+              titulo: 'Eventos',
+              icono: 'fa fa-address-book',
+              evntmenu: [
+                    //Todas las rutas del menu
+              ]
             }
+          ]
+               
+        //Configuraciones por Rol 
+        if (ROL === 'ADMIN_ROLE') {
+            menu[1].submenu.unshift({  titulo: 'Usuarios', url: '/usuarios' });
+        }
+
+        if(ROL === 'FACILITADOR_ROLE' | ROL === 'ADMIN_ROLE' ){
+            menu[2].evntmenu.unshift({ titulo: 'Crear Eventos', url: '/eventos'});         
+        }
+
+    return menu;
+}
 
 
 module.exports = app;
