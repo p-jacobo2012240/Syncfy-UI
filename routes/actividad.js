@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 
-
 //Middleweare Auth
 const mdAuth = require('../middlewares/auth')
 const Actividad = require('../models/actividad')
