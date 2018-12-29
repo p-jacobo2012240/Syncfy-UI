@@ -38,13 +38,13 @@ mongoose.connection.openUri(process.env.URLDB, (err, res) => {
 
 
 //Asign-Routes
-app.use('/usuario', usuarioRoutes)
-app.use('/login', loginRoutes)
-app.use('/busqueda', busquedaRoutes)
-app.use('/upload', uploadRoutes)
-app.use('/img', imagenesRoutes)
-app.use('/actividad', actividadRoute)
-app.use('/evento', eventoRoute)
+app.use('api/v1/usuario', usuarioRoutes)
+app.use('api/v1/login', loginRoutes)
+app.use('api/v1/busqueda', busquedaRoutes)
+app.use('api/v1/upload', uploadRoutes)
+app.use('api/v1/img', imagenesRoutes)
+app.use('api/v1/actividad', actividadRoute)
+app.use('api/v1/evento', eventoRoute)
 app.use('/', appRoutes)
 
 
