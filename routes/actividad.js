@@ -33,7 +33,7 @@ app.get('/', async(req, res, next) =>{
         }).skip(desde)
         .limit(5)
         .populate('usuario', 'nombre_actividad cantidad_puntos  usuarios_asignado')
-        .populate('hospital') 
+        .populate('actividad') 
 
     } catch (e) {
         return next(e)
@@ -100,7 +100,7 @@ app.post('/', mdAuth.verificaToken, async(req, res) =>{
         })
 
     } catch (e) {
-        return console.log(e)
+        return console.error(e)
     }
 })
 
