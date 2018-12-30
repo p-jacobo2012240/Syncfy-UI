@@ -26,7 +26,7 @@ app.get('/', async(req, res)=>{
     }
 })
 
-app.get('/:id_card', (req, res)=>{
+app.get('/:id_card', async(req, res)=>{
 
     let id_card = req.params.id_card
     let result
@@ -51,9 +51,47 @@ app.get('/:id_card', (req, res)=>{
     }
 })
 
-app.post('/', (req, res)=>{
+app.post('/', async(req, res)=>{
 
-    console.log('cambios porximamente ')
+    let body = req.body
+    let result
+
+    let _tarjeta = new Tarjeta({
+        datos : body.datos,
+        usuario: body.req.usuario.id
+        //Otras configuraciones futuras
+    })
+
+    /*
+          var body = req.body;
+
+    var evnto = new Evento({
+        nombre_evento: body.nombre_evento,
+        fecha: body.fecha,
+        usuario: req.usuario._id, //El Usuario que lo manda
+        actividad: body.actividad    
+    });
+
+    */
+   
+    try {
+        
+        result = await _tarjeta.save( (err, newTarjeta)=>{
+            if(err){
+                res.send({
+                    message: 'Error de Db',
+                    errors: err
+                }).statusCode(403)
+            }
+
+            res.status(200).json({
+                message: 'Constula Exitosa',
+                results: newTarjeta 
+            })
+        })
+    } catch (e) {
+        return console.error(e)
+    }
 })
 
 module.exports = app

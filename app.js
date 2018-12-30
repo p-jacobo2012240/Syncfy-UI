@@ -14,6 +14,7 @@ const uploadRoutes = require('./routes/upload')
 const imagenesRoutes = require('./routes/imagenes')
 const actividadRoute = require('./routes/actividad')
 const eventoRoute = require('./routes/evento')
+const tarjetaRoute = require('./routes/tarjeta')
 
 
 const app = express()
@@ -46,6 +47,7 @@ app.use('/api/v1/upload', uploadRoutes)
 app.use('/api/v1/img', imagenesRoutes)
 app.use('/api/v1/actividad', actividadRoute)
 app.use('/api/v1/evento', eventoRoute)
+app.use('/api/v1/tarjeta', tarjetaRoute)
 app.use('/', appRoutes)
 
 

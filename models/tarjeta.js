@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const tarjetaSchema = new Schema({
-    tarjeta: {
+    datos: {
         propietario: String,
         numero_tarjeta : String,
         fecha_vencimiento: String,
