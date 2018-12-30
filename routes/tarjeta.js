@@ -57,23 +57,13 @@ app.post('/', async(req, res)=>{
     let result
 
     let _tarjeta = new Tarjeta({
-        datos : body.datos,
-        usuario: body.req.usuario.id
-        //Otras configuraciones futuras
+        propietario: body.propietario,
+        numero_tarjeta: body.numero_tarjeta,
+        fecha_vencimiento: body. fecha_vencimiento,
+        numero_secreto: body.numero_secreto,
+        usuario: req.usuario._id
     })
-
-    /*
-          var body = req.body;
-
-    var evnto = new Evento({
-        nombre_evento: body.nombre_evento,
-        fecha: body.fecha,
-        usuario: req.usuario._id, //El Usuario que lo manda
-        actividad: body.actividad    
-    });
-
-    */
-   
+    
     try {
         
         result = await _tarjeta.save( (err, newTarjeta)=>{
