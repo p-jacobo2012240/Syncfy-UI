@@ -5,19 +5,6 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const chalk = require('chalk')
 
-//Routes
-const appRoutes = require('./routes/app')
-const usuarioRoutes = require('./routes/usuario')
-const loginRoutes = require('./routes/login')
-const busquedaRoutes = require('./routes/busqueda')
-const uploadRoutes = require('./routes/upload')
-const imagenesRoutes = require('./routes/imagenes')
-const actividadRoute = require('./routes/actividad')
-const eventoRoute = require('./routes/evento')
-const tarjetaRoute = require('./routes/tarjeta')
-const pagoRoute = require('./routes/pago')
-
-
 const app = express()
 
 //CORS-CONFIG
@@ -34,24 +21,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
+// Global Index/Routes
+app.use(require('./config/index-routes'));
+
 mongoose.connection.openUri(process.env.URLDB, (err, res) => {
     if (err) throw err;
     console.log(`Database: ${chalk.green('[Steam-DB --Online]')}`)
 })
-
-
-//Asign-Routes
-app.use('/api/v1/users', usuarioRoutes)
-app.use('/api/v1/login', loginRoutes)
-app.use('/api/v1/busqueda', busquedaRoutes)
-app.use('/api/v1/upload', uploadRoutes)
-app.use('/api/v1/img', imagenesRoutes)
-app.use('/api/v1/actividad', actividadRoute)
-app.use('/api/v1/evento', eventoRoute)
-app.use('/api/v1/card', tarjetaRoute)
-app.use('/api/v1/payment', pagoRoute )
-app.use('/', appRoutes)
-
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server on Port ${process.env.PORT} ${chalk.green('[Steam-API --Online]')}`)
