@@ -35,28 +35,34 @@ app.get('/:id_card', async(req, res)=>{
     let result
 
     try {
-        result = await Tarjeta.findById(id_card, (err, cardOne)=>{
-            if(err){
-                res.send({
-                    message: 'Error de DB',
-                    errors: err
+        
+        if(id_card.match(/^[0-9a-fA-F]{24}$/)){
+            result = await Tarjeta.findById(id_card, (err, cardOne)=>{
+                if(err){
+                    res.send({
+                        message: 'Error de DB',
+                        errors: err
+                    })
+                }
+    
+                res.status(200).json({
+                    ok: true,
+                    message: 'Consulta Exitosa',
+                    results: cardOne
                 })
-            }
-
-            res.status(200).json({
-                ok: true,
-                message: 'Consulta Exitosa',
-                results: cardOne
-            })
-        })    
+            })       
+        }else{
+            res.send({ message: `el id: ${id_card} debe ser valido` })
+        }
     } catch (e) {
-        return console.error(e)
+        res.status(400).send('Invalid JSON string')
     }
 })
 
-app.post('/', auth.verificaToken , (req, res)=>{
+app.post('/', auth.verificaToken, async(req, res)=>{
 
     let body = req.body
+    let result
 
     let tarjetaOBJ = new Tarjeta({
         propietario: body.propietario,
@@ -66,20 +72,25 @@ app.post('/', auth.verificaToken , (req, res)=>{
         usuario: req.usuario, 
     })
 
-    tarjetaOBJ.save( (err, tarjetaGuardada)=>{
-        if(err){
-            return res.send({
-                message: 'Existe un error',
-                errors: err
-            })
-        }
+    try {
+        result = await tarjetaOBJ.save( (err, dataSaved)=>{
+            if(err){
+                return res.status(500).json({
+                    ok: false,
+                    message: 'Consulta exitosa',
+                    errors: err
+                })
+            }
 
-        res.status(201).json({
-            ok: true,
-            message: 'Consulta Exitosa',
-            results: tarjetaGuardada           
+            res.status(201).json({
+                ok: true,
+                message: 'Consulta Exitosa',
+                results: dataSaved   
+            })
         })
-    })
+    } catch (e) {
+       return console.log(`Ocurrio una excepcion ${e}`)
+    }
 })
 
 module.exports = app
