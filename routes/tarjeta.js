@@ -52,7 +52,9 @@ app.get('/:id_card', async(req, res)=>{
                 })
             })       
         }else{
-            res.send({ message: `el id: ${id_card} debe ser valido` })
+            res.send({ 
+                message: `el id: ${id_card} debe ser valido` 
+            })
         }
     } catch (e) {
         res.status(400).send('Invalid JSON string')
