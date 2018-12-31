@@ -7,7 +7,7 @@ const tarjetaSchema = new Schema({
         required: [ true, 'El nombre es requerido']
     },
     numero_tarjeta: {
-        type: String,
+        type: Number,
         required: [ true, 'El numero de tarjeta es necesario']
     },
     fecha_vencimiento : {
@@ -15,13 +15,13 @@ const tarjetaSchema = new Schema({
         required: [true, 'Este numero no puede faltar']
     },
     numero_secreto: {
-        type: String,
+        type: Number,
         required: [true, 'Este numero es vital']
     },
     usuario: {
         type: Schema.Types.ObjectId,  
         ref: 'Usuario',	
-        required: true 
+        required: [ true, 'El id del usuario es requerido' ] 
     }
 }, { collection: 'tarjeta' })
 

@@ -1,6 +1,9 @@
 const express = require('express')
+const auth = require('../middlewares/auth')
 const app = express()
 const Tarjeta = require('../models/tarjeta')
+const usuario = require('../models/usuario')
+
 
 app.get('/', async(req, res)=>{
     
@@ -37,7 +40,7 @@ app.get('/:id_card', async(req, res)=>{
                 res.send({
                     message: 'Error de DB',
                     errors: err
-                }).statusCode(403)
+                })
             }
 
             res.status(200).json({
@@ -51,37 +54,32 @@ app.get('/:id_card', async(req, res)=>{
     }
 })
 
-app.post('/', async(req, res)=>{
+app.post('/', auth.verificaToken , (req, res)=>{
 
     let body = req.body
-    let result
 
-    let _tarjeta = new Tarjeta({
+    let tarjetaOBJ = new Tarjeta({
         propietario: body.propietario,
         numero_tarjeta: body.numero_tarjeta,
-        fecha_vencimiento: body. fecha_vencimiento,
+        fecha_vencimiento: body.fecha_vencimiento,
         numero_secreto: body.numero_secreto,
-        usuario: req.usuario._id
+        usuario: req.usuario, 
     })
-    
-    try {
-        
-        result = await _tarjeta.save( (err, newTarjeta)=>{
-            if(err){
-                res.send({
-                    message: 'Error de Db',
-                    errors: err
-                }).statusCode(403)
-            }
 
-            res.status(200).json({
-                message: 'Constula Exitosa',
-                results: newTarjeta 
+    tarjetaOBJ.save( (err, tarjetaGuardada)=>{
+        if(err){
+            return res.send({
+                message: 'Existe un error',
+                errors: err
             })
+        }
+
+        res.status(201).json({
+            ok: true,
+            message: 'Consulta Exitosa',
+            results: tarjetaGuardada           
         })
-    } catch (e) {
-        return console.error(e)
-    }
+    })
 })
 
 module.exports = app

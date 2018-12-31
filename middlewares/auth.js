@@ -1,37 +1,21 @@
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+const SEED = require('../config/config').SEED;
 
-var SEED = require('../config/config').SEED;
-
-
-// ==========================================
-//  Verificar token
-// ==========================================
-exports.verificaToken = function(req, res, next) {  //Exportando una funcion
+exports.verificaToken = (req, res, next) => {  
     
-        var token = req.query.token;
+    const token = req.query.token
+    jwt.verify(token, SEED, (err, decoded) => {
     
-        jwt.verify(token, SEED, (err, decoded) => {
-    
-            if (err) {
-                return res.status(401).json({
-                    ok: false,
-                    mensaje: 'Token incorrecto',
-                    errors: err
-                });
-            }
-    
-            req.usuario = decoded.usuario;  //Extraer todo lo que traiga el request
-    
-            next();
-            /*
-                res.status(200).json({
-                    ok: false,
-                    mensaje: 'Operacion Correcta',
-                    errors: err
-                });
-            */ 
-    
-    
-        });
-    
+    if (err) {
+        return res.status(401).json({
+            ok: false,
+            mensaje: 'Token Invalido',
+            errors: err
+        })
     }
+    
+    req.usuario = decoded.usuario
+    next();
+    
+    })
+}
