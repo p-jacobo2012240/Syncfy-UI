@@ -1,3 +1,4 @@
+//Global ENVIROMENT CONFIG
 require('./config/config')
 
 const express = require('express')
