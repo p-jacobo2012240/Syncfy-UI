@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    if(this.auth.isAuthenticated$) {
+     this.auth.idTokenClaims$.subscribe((claims) => console.log(claims));
+    }
   }
-
 }

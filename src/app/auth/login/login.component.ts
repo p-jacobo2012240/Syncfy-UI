@@ -3,7 +3,6 @@ import { DOCUMENT } from '@angular/common';
 
 import { AuthService } from '@auth0/auth0-angular';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,6 +16,10 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  }
+
+  SignIn() {
+    this.auth.loginWithPopup();
   }
 
 
