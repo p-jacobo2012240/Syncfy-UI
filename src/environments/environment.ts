@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   auth0: {
-    domain: 'XXXX',
-    clientId: 'XXXX'
+    domain: 'XXXX-XXX-XXX',
+    clientId: 'XXX-XXX-XXX'
   }
 };
 
