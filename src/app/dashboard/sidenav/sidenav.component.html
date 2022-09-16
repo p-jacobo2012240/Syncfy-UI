@@ -1,0 +1,7 @@
+<div class="base-sidebar" color="primary">
+    <mat-selection-list  [multiple]="false">
+        <mat-list-option class="background-items" *ngFor="let option of menuOptions" [value]="option">
+          {{option}}
+        </mat-list-option>
+    </mat-selection-list>
+</div>
