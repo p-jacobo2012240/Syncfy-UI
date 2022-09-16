@@ -1,8 +1,7 @@
-<app-navbar  (changeSideNavStatus)="changeSideNavStatus($event)" ></app-navbar>
+<app-navbar (changeSideNavStatus)="changeSideNavStatus($event)"></app-navbar>
 
-<app-sidenav 
-    *ngIf="showSideNav"
->
-</app-sidenav>
+<app-sidenav *ngIf="showSideNav"></app-sidenav>
+
+<app-configuration-searching-engine></app-configuration-searching-engine>
 
 <app-metrics></app-metrics>
