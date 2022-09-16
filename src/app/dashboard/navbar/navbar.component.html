@@ -1,13 +1,14 @@
-<p>
-    <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon (click)="showSideMenu()" >menu</mat-icon>
+    </button>
       <span>Syncfy-UI</span>
       <span class="example-spacer"></span>
-      <button mat-button *ngIf="auth.user$ | async as user" >{{ user.name }}</button>
-      <button (click)="LogOut()" mat-icon-button class="example-icon" aria-label="LogOut">
-        <mat-icon>remove_circle</mat-icon>
-      </button>
-    </mat-toolbar>
-</p>
+    <button mat-button *ngIf="auth.user$ | async as user" >{{ user.name }}</button>
+    <button (click)="LogOut()" mat-icon-button class="example-icon" aria-label="LogOut">
+          <mat-icon>remove_circle</mat-icon>
+    </button>
+</mat-toolbar>
+
+
+

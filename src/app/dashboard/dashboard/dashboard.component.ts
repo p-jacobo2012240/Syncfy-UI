@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  public showSideNav: boolean = false;
 
   constructor(public auth: AuthService, private router: Router) { }
 
@@ -16,4 +17,14 @@ export class DashboardComponent implements OnInit {
      this.auth.idTokenClaims$.subscribe((claims) => console.log(claims));
     }
   }
+
+  changeSideNavStatus(status: boolean) {
+    if(this.showSideNav) {
+      this.showSideNav = false;
+    } else {
+      this.showSideNav = status;
+    }
+    console.log('the value is', status)
+  }
+
 }

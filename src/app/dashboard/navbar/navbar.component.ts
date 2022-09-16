@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 
@@ -8,6 +8,7 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  @Output() changeSideNavStatus = new EventEmitter<boolean>();
 
   constructor(
     public auth: AuthService, 
@@ -23,6 +24,10 @@ export class NavbarComponent implements OnInit {
   LogOut() {
     this.auth.logout();
     this.router.navigateByUrl('/');
+  }
+
+  showSideMenu(){
+    this.changeSideNavStatus.emit(true);
   }
 
 }

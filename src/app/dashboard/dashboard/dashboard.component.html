@@ -1,1 +1,8 @@
-<app-navbar></app-navbar>
+<app-navbar  (changeSideNavStatus)="changeSideNavStatus($event)" ></app-navbar>
+
+<app-sidenav 
+    *ngIf="showSideNav"
+>
+</app-sidenav>
+
+<app-metrics></app-metrics>
