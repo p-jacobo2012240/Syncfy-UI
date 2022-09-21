@@ -16,7 +16,7 @@ export class ConfigurationSearchingEngineComponent implements OnInit {
   filterCtrl = new FormControl('');
   filteredChips: Observable<string[]>;
   filters: string[] = [];
-  allFilters: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
+  allFilters: string[] = ['testFilter', 'Foo'];
 
   @ViewChild('filterInput') filterInput!: ElementRef<HTMLInputElement>;
 
@@ -57,7 +57,6 @@ export class ConfigurationSearchingEngineComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.allFilters.filter(fruit => fruit.toLowerCase().includes(filterValue));
   }
 

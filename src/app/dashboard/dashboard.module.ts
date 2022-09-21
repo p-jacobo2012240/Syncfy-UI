@@ -10,6 +10,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { ConfigurationSearchingEngineComponent } from './configuration-searching-engine/configuration-searching-engine.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SettingOfMetricsComponent } from './setting-of-metrics/setting-of-metrics.component';
 
 @NgModule({
   declarations: [ 
@@ -17,7 +18,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     NavbarComponent, 
     MetricsComponent, 
     SidenavComponent, 
-    ConfigurationSearchingEngineComponent 
+    ConfigurationSearchingEngineComponent, 
+    SettingOfMetricsComponent 
   ],
   imports: [ 
     CommonModule, 

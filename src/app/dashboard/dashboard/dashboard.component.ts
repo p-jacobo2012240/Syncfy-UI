@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   public showSideNav: boolean = false;
+  public showConfiguration: boolean = false;
+
 
   constructor(public auth: AuthService, private router: Router) { }
 
@@ -25,6 +27,14 @@ export class DashboardComponent implements OnInit {
       this.showSideNav = status;
     }
     console.log('the value is', status)
+  }
+
+  tempNavigation(view: string) {
+    this.showSideNav = false;
+    console.log('view action', view)
+    if(view == 'metrics') {
+      this.showConfiguration = true;
+    }
   }
 
 }
