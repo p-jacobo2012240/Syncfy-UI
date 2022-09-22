@@ -1,0 +1,21 @@
+<div class="center-metric-one-btn">
+    <form  (click)="setValue()">
+    <mat-form-field appearance="fill">
+        <mat-label>Nomnbre Filtro</mat-label>
+        <input [(ngModel)]="name" type="text" name="name" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="one">Errores en procesamiento</mat-option>
+          <mat-option value="two">Archivos procesados</mat-option>
+          <mat-option value="two">Archivos en cola</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+    <input type="submit" value="Guardar"  mat-raised-button color="primary" >
+</form>
+</div>
