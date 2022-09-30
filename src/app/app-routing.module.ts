@@ -1,23 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DashboardRoutingModule } from './dashboard/dashboard.routing';
+import { AuthRoutingModule } from './auth/auth.routing';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LoginComponent
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: '',
-    redirectTo: '/',
-    pathMatch: 'full' 
-}
+  { 
+    path: '', 
+    redirectTo: '/dashboard', 
+    pathMatch: 'full',
+  }
 ];
 
 
@@ -25,7 +17,9 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AuthRoutingModule,
+    DashboardRoutingModule
   ],
   exports: [ RouterModule ]
 })

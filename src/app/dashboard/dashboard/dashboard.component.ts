@@ -12,7 +12,10 @@ export class DashboardComponent implements OnInit {
   public showConfiguration: boolean = false;
 
 
-  constructor(public auth: AuthService, private router: Router) { }
+  constructor(
+    public auth: AuthService, 
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     if(this.auth.isAuthenticated$) {

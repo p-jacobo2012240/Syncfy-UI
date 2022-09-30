@@ -7,11 +7,11 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-configuration-searching-engine',
-  templateUrl: './configuration-searching-engine.component.html',
-  styleUrls: ['./configuration-searching-engine.component.css']
+  selector: 'app-filter-searching-engine',
+  templateUrl: './filter-searching-engine.component.html',
+  styleUrls: ['./filter-searching-engine.component.css']
 })
-export class ConfigurationSearchingEngineComponent implements OnInit {
+export class FilterSearchingEngineComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   filterCtrl = new FormControl('');
   filteredChips: Observable<string[]>;
