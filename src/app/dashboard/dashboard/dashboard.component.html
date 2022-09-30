@@ -1,9 +1,16 @@
-<app-navbar (changeSideNavStatus)="changeSideNavStatus($event)"></app-navbar>
+<app-navbar 
+    (changeSideNavStatus)="changeSideNavStatus($event)"
+></app-navbar>
 
-<app-sidenav *ngIf="showSideNav" (tempNavigation)="tempNavigation($event)" ></app-sidenav>
+<app-sidenav 
+    *ngIf="showSideNav" 
+    (tempNavigation)="tempNavigation($event)" 
+></app-sidenav>
 
-<app-configuration-searching-engine></app-configuration-searching-engine>
+<!-- general filters -->
+<app-filter-searching-engine></app-filter-searching-engine>
+<!-- general filters -->
 
-<app-metrics *ngIf="!showConfiguration"></app-metrics>
-
-<app-setting-of-metrics *ngIf="showConfiguration" ></app-setting-of-metrics>
+<!--- all dashboard components there will be here --->
+<router-outlet></router-outlet>
+<!--- all dashboard components there will be here --->

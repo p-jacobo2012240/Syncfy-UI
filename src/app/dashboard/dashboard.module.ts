@@ -7,7 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { MetricsComponent } from './metrics/metrics.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { ConfigurationSearchingEngineComponent } from './configuration-searching-engine/configuration-searching-engine.component';
+import { FilterSearchingEngineComponent } from './filters-searching-engine/filter-searching-engine.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SettingOfMetricsComponent } from './setting-of-metrics/setting-of-metrics.component';
@@ -18,7 +18,7 @@ import { SettingOfMetricsComponent } from './setting-of-metrics/setting-of-metri
     NavbarComponent, 
     MetricsComponent, 
     SidenavComponent, 
-    ConfigurationSearchingEngineComponent, 
+    FilterSearchingEngineComponent, 
     SettingOfMetricsComponent 
   ],
   imports: [ 
