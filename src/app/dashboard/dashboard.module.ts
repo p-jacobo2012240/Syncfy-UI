@@ -11,6 +11,8 @@ import { FilterSearchingEngineComponent } from './filters-searching-engine/filte
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SettingOfMetricsComponent } from './setting-of-metrics/setting-of-metrics.component';
+import { AlertsComponent } from './metrics/alerts/alerts.component';
+import { NotificationsComponent } from './metrics/notifications/notifications.component';
 
 @NgModule({
   declarations: [ 
@@ -19,7 +21,7 @@ import { SettingOfMetricsComponent } from './setting-of-metrics/setting-of-metri
     MetricsComponent, 
     SidenavComponent, 
     FilterSearchingEngineComponent, 
-    SettingOfMetricsComponent 
+    SettingOfMetricsComponent, AlertsComponent, NotificationsComponent 
   ],
   imports: [ 
     CommonModule, 
