@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { Component, EventEmitter, OnInit, Output, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 
@@ -8,14 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  public showSideNav: boolean = false;
-  public showConfiguration: boolean = false;
+  public mobileQuery: MediaQueryList;
 
+  public fillerNav = Array.from({ length: 10 }, (_, i) => `Nav Item ${i + 1}`);
+
+  private _mobileQueryListener: () => void;
 
   constructor(
     public auth: AuthService, 
-    private router: Router
-  ) { }
+    private router: Router,
+    public changeDetectorRef: ChangeDetectorRef, 
+    public media: MediaMatcher
+  ) { 
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
   ngOnInit(): void {
     if(this.auth.isAuthenticated$) {
@@ -23,21 +32,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  changeSideNavStatus(status: boolean) {
-    if(this.showSideNav) {
-      this.showSideNav = false;
-    } else {
-      this.showSideNav = status;
-    }
-    console.log('the value is', status)
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  tempNavigation(view: string) {
-    this.showSideNav = false;
-    console.log('view action', view)
-    if(view == 'metrics') {
-      this.showConfiguration = true;
-    }
+  LogOut() {
+    this.auth.logout();
+    this.router.navigateByUrl('/');
   }
 
 }
