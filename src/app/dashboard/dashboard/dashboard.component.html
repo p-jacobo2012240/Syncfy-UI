@@ -1,16 +1,37 @@
-<app-navbar 
-    (changeSideNavStatus)="changeSideNavStatus($event)"
-></app-navbar>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <!--mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <h1 class="example-app-name">Responsive App</h1>
+    </mat-toolbar-->
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon (click)="snav.toggle()">menu</mat-icon>
+        </button>
+          <span>Syncfy-UI</span>
+          <span class="example-spacer"></span>
+        <button mat-button *ngIf="auth.user$ | async as user" >{{ user.name }}</button>
+        <button (click)="LogOut()" mat-icon-button class="example-icon" aria-label="LogOut">
+              <mat-icon>remove_circle</mat-icon>
+        </button>
+    </mat-toolbar>
 
-<app-sidenav 
-    *ngIf="showSideNav" 
-    (tempNavigation)="tempNavigation($event)" 
-></app-sidenav>
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+            </mat-nav-list>
+        </mat-sidenav>
+  
+        <mat-sidenav-content>
+            <!-- general filters -->
+                <app-filter-searching-engine></app-filter-searching-engine>
+            <!-- general filters -->
 
-<!-- general filters -->
-<app-filter-searching-engine></app-filter-searching-engine>
-<!-- general filters -->
-
-<!--- all dashboard components there will be here --->
-<router-outlet></router-outlet>
-<!--- all dashboard components there will be here --->
+            <!--- all dashboard components there will be here --->
+                <router-outlet></router-outlet>
+            <!--- all dashboard components there will be here --->
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
