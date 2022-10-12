@@ -7,6 +7,8 @@ import { SettingOfMetricsComponent } from './setting-of-metrics/setting-of-metri
 // Import the authentication guard
 import { AuthGuard } from '@auth0/auth0-angular';
 import { MetricsComponent } from './metrics/metrics.component';
+import { AdmAlertsComponent } from './setting-of-metrics/adm-alerts/adm-alerts.component';
+import { AdmNotificationsComponent } from './setting-of-metrics/adm-notifications/adm-notifications.component';
 
 const dashboardRoutes: Routes = [
     { 
@@ -18,8 +20,18 @@ const dashboardRoutes: Routes = [
                 component: MetricsComponent
             },
             { 
-                path: 'metrics-settings', 
-                component: SettingOfMetricsComponent  
+                path: 'metrics-settings/:type', 
+                component: SettingOfMetricsComponent,
+                children: [
+                    { 
+                        path: 'alerts', 
+                        component: AdmAlertsComponent  
+                    },
+                    {
+                        path: 'notifications', 
+                        component: AdmNotificationsComponent  
+                    }
+                ]
             }
         ],
         canActivate: [ AuthGuard ]
