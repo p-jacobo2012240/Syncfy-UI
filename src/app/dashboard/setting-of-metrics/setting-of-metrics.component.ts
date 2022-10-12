@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ACTIONS } from '../dashboard-utils';
 
 @Component({
   selector: 'app-setting-of-metrics',
@@ -6,19 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setting-of-metrics.component.css']
 })
 export class SettingOfMetricsComponent implements OnInit {
-  public name: string = '';
-  public filters: string[] = [];
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.getTypeOfView();
   }
 
-  setValue() {
-    console.log('filter', this.name );
-    this.filters = JSON.parse(JSON.stringify(localStorage.getItem('filters')));
-    this.filters.push(this.name)
-    localStorage.setItem('filters', JSON.stringify(this.filters))
+  getTypeOfView(): void {
+    this.activatedRoute.params.subscribe(params => {
+      const viewType = ACTIONS[params['type']].toLowerCase();
+      if (viewType) {
+        this.router
+          .navigateByUrl(`/dashboard/metrics-settings/${params['type']}/${viewType}`)
+      }
+    });
   }
 
 }

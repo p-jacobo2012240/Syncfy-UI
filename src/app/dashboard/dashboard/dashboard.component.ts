@@ -1,17 +1,17 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Component, EventEmitter, OnInit, Output, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
+import { menuOptions, SideMenu } from '../dashboard-utils';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   public mobileQuery: MediaQueryList;
-
-  public fillerNav = Array.from({ length: 10 }, (_, i) => `Nav Item ${i + 1}`);
+  public fillerNav: SideMenu[] = []; 
 
   private _mobileQueryListener: () => void;
 
@@ -28,7 +28,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.auth.isAuthenticated$) {
-     this.auth.idTokenClaims$.subscribe((claims) => console.log(claims));
+      this.auth.idTokenClaims$.subscribe((claims) => console.log(claims));
+      this.fillerNav = menuOptions;
     }
   }
 
