@@ -13,6 +13,9 @@ import { AlertsComponent } from './metrics/alerts/alerts.component';
 import { NotificationsComponent } from './metrics/notifications/notifications.component';
 import { AdmAlertsComponent } from './setting-of-metrics/adm-alerts/adm-alerts.component';
 import { AdmNotificationsComponent } from './setting-of-metrics/adm-notifications/adm-notifications.component';
+import { AdmFormAlertComponent } from './setting-of-metrics/adm-alerts/adm-form-alert/adm-form-alert.component';
+import { AdmFormNotificationComponent } from './setting-of-metrics/adm-notifications/adm-form-notification/adm-form-notification.component';
+import { AutomatedTasksComponent } from './automated-tasks/automated-tasks.component';
 
 @NgModule({
   declarations: [ 
@@ -21,7 +24,12 @@ import { AdmNotificationsComponent } from './setting-of-metrics/adm-notification
     FilterSearchingEngineComponent, 
     SettingOfMetricsComponent, 
     AlertsComponent, 
-    NotificationsComponent, AdmAlertsComponent, AdmNotificationsComponent 
+    NotificationsComponent, 
+    AdmAlertsComponent, 
+    AdmNotificationsComponent, 
+    AdmFormAlertComponent, 
+    AdmFormNotificationComponent, 
+    AutomatedTasksComponent, 
   ],
   imports: [ 
     CommonModule, 

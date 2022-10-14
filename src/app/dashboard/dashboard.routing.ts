@@ -9,6 +9,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 import { MetricsComponent } from './metrics/metrics.component';
 import { AdmAlertsComponent } from './setting-of-metrics/adm-alerts/adm-alerts.component';
 import { AdmNotificationsComponent } from './setting-of-metrics/adm-notifications/adm-notifications.component';
+import { AutomatedTasksComponent } from './automated-tasks/automated-tasks.component';
 
 const dashboardRoutes: Routes = [
     { 
@@ -18,6 +19,10 @@ const dashboardRoutes: Routes = [
             {
                 path: '',
                 component: MetricsComponent
+            },
+            {
+                path: 'automated-tasks',
+                component: AutomatedTasksComponent
             },
             { 
                 path: 'metrics-settings/:type', 

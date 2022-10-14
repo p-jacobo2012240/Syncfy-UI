@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module'; 
 import { DashboardModule } from './dashboard/dashboard.module'; 
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 // Import the module from the SDK
@@ -20,6 +21,7 @@ import { MaterialModule } from './material/material.module';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
     AuthModule,
     DashboardModule, 
     RouterModule,
