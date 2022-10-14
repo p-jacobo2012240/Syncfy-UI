@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import { AlertDomain } from 'src/app/core/metrics/domains/alert.domain';
+
 
 @Component({
   selector: 'app-adm-alerts',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmAlertsComponent implements OnInit {
 
-  constructor() { }
+  public dataSource  = new MatTableDataSource();  
+  public displayedColumns: string[] = ['Id', 'Nombre', 'Fecha de Creacion', 'Fecha vencimiento', 'Tipo', 'Filtro' ];
 
-  ngOnInit(): void {
+  constructor() { 
   }
 
+  ngOnInit(): void {
+    let oauth = JSON.parse(JSON.stringify(localStorage.getItem('oauth')));
+
+    console.log('oauth ', oauth );
+  }
+
+  
 }

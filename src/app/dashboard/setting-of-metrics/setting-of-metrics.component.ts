@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ACTIONS } from '../dashboard-utils';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-setting-of-metrics',
@@ -19,13 +20,21 @@ export class SettingOfMetricsComponent implements OnInit {
   }
 
   getTypeOfView(): void {
-    this.activatedRoute.params.subscribe(params => {
-      const viewType = ACTIONS[params['type']].toLowerCase();
-      if (viewType) {
-        this.router
-          .navigateByUrl(`/dashboard/metrics-settings/${params['type']}/${viewType}`)
-      }
-    });
+    this.activatedRoute.params.pipe(
+      map((element: any) => {
+      	let viewType = ACTIONS[element.type].toLowerCase();
+
+        if( viewType === 'automated_tasks') {
+          viewType = 'automated-tasks';
+          (viewType) && this.router.navigateByUrl(
+            `/dashboard/automated-tasks`
+          )
+        } else {
+          (viewType) && this.router.navigateByUrl(
+            `/dashboard/metrics-settings/${element.type}/${viewType}`
+          ) 
+        }
+    })).subscribe();
   }
 
 }
