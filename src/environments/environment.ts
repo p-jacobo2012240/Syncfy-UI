@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   auth0: {
-    domain: 'quinx2.auth0.com',
-    clientId: 'V5Wrt8I5aUkWvDWm4kIeOPW508mH4bNX'
+    domain: 'XXX-XXX-XXX',
+    clientId: 'XXX-XXX-XXX'
   },
   syncfyManagement: {
     apiURL: 'http://localhost',
