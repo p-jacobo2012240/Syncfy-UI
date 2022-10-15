@@ -1,11 +1,9 @@
-.demo-table {
-    width: 100%;
-  }
-  
-  .demo-button-container {
-    padding-bottom: 16px;
-  }
-  
-  .demo-button + .demo-button {
-    margin-left: 8px;
-  }
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}

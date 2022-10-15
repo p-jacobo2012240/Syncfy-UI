@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { AlertDomain } from 'src/app/core/metrics/domains/alert.domain';
+import { AlertService } from 'src/app/core/metrics/services/alert.service';
+import { AdmFormAlertComponent } from './adm-form-alert/adm-form-alert.component';
+import { AuthDomain } from 'src/app/core/metrics/domains/auth.domain';
+import { AlertCreatorDomain } from 'src/app/core/metrics/domains/alert-creator.domain';
 
 
 @Component({
@@ -10,16 +15,51 @@ import { AlertDomain } from 'src/app/core/metrics/domains/alert.domain';
 })
 export class AdmAlertsComponent implements OnInit {
 
-  public dataSource  = new MatTableDataSource();  
-  public displayedColumns: string[] = ['Id', 'Nombre', 'Fecha de Creacion', 'Fecha vencimiento', 'Tipo', 'Filtro' ];
+  public displayedColumns: string[] = ['id', 'name', 'creationDate', 'expiryDate', 'type', 'opciones' ];
+  public dataSource = new MatTableDataSource();
+  private authDomain: AuthDomain = new AuthDomain();
 
-  constructor() { 
-  }
+  constructor(
+    private alertService: AlertService,
+    public dialog: MatDialog
+  ) { }
+
 
   ngOnInit(): void {
-    let oauth = JSON.parse(JSON.stringify(localStorage.getItem('oauth')));
+    const authJson = localStorage.getItem('oauth');
+    this.authDomain = authJson !== null ? JSON.parse(authJson) : this.authDomain;
+    this.getAlertsByOAuth(this.authDomain.id);
+  }
 
-    console.log('oauth ', oauth );
+  getAlertsByOAuth(id: Number) {
+    this.alertService.alertsByOAuth(id)
+      .subscribe((alertDomainList) => {
+        console.log(alertDomainList);
+        this.dataSource.data = alertDomainList;  
+      })
+  } 
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  addAlert() {
+    const dialogRef = this.dialog.open(
+      AdmFormAlertComponent, { 
+        data: this.authDomain 
+      } 
+    );
+    
+    dialogRef.afterClosed().subscribe((alertCreator: AlertCreatorDomain ) => {
+      this.alertService.newAlert(alertCreator);
+      this.getAlertsByOAuth(this.authDomain.id);
+    });
+  }
+
+  deleteAlert(alertDomain: AlertDomain) {
+    this.alertService.deleteAlert(alertDomain.id);
+    this.getAlertsByOAuth(this.authDomain.id);
   }
 
   

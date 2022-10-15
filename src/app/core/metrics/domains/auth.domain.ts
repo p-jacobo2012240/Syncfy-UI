@@ -1,10 +1,10 @@
-export interface AuthDomain {
-    id?: Number;
-    email?: string;
-    aud?: string;
-    iss?: string;
-    nonce?: string;
-    picture?: string;
+export class AuthDomain {
+    id: Number = 0;
+    email: string = '';
+    aud: string = '';
+    iss: string = '';
+    nonce: string ='';
+    picture: string = '';
 }
 
 export interface AuthDtoPayloadDomain {

@@ -7,7 +7,7 @@ import { MetricsComponent } from './metrics/metrics.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { FilterSearchingEngineComponent } from './filters-searching-engine/filter-searching-engine.component';
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingOfMetricsComponent } from './setting-of-metrics/setting-of-metrics.component';
 import { AlertsComponent } from './metrics/alerts/alerts.component';
 import { NotificationsComponent } from './metrics/notifications/notifications.component';

@@ -1,1 +1,41 @@
-<p>adm-form-alert works!</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Fecha de creación</mat-label>
+        <input matInput formControlName="creationDate" [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Fecha de expiración</mat-label>
+            <input matInput formControlName="expiryDate" [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Tipo</mat-label>
+            <mat-select name="type" formControlName="type">
+                <mat-option value="day">Diaria</mat-option>
+                <mat-option value="week">Mensual</mat-option>
+                <mat-option value="month">Mensual</mat-option>
+            </mat-select>
+        </mat-form-field>    
+    </p>
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+</form>
