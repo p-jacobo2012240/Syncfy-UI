@@ -14,6 +14,7 @@ import { AuthDomain, AuthDtoPayloadDomain } from 'src/app/core/metrics/domains/a
 export class DashboardComponent implements OnInit, OnDestroy {
   public mobileQuery: MediaQueryList;
   public fillerNav: SideMenu[] = []; 
+  private authDomain: AuthDomain = new AuthDomain();
   
   private _mobileQueryListener: () => void;
 
@@ -33,16 +34,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if(this.auth.isAuthenticated$) {
       this.auth.idTokenClaims$.subscribe((claims) => {
         console.log('success logged!') 
-
-        const authDomain: AuthDomain = { 
-          email: claims?.email, 
-          aud: claims?.aud, 
-          iss: claims?.iss, 
-          nonce: claims?.nonce,
-          picture: claims?.picture 
-        }
         
-        this.authValidate.checkIfExistOAuth(authDomain); 
+        // TEMP APPROACH
+        this.authDomain.email = (claims?.email) ? claims.email : '';
+        this.authDomain.aud = (claims?.aud) ? claims.aud : '';
+        this.authDomain.iss = (claims?.iss) ? claims.iss : '';
+        this.authDomain.nonce = (claims?.nonce) ? claims.nonce : '';
+        this.authDomain.picture = (claims?.picture) ? claims.picture : '';
+        
+        this.authValidate.checkIfExistOAuth(this.authDomain); 
       });
       this.fillerNav = menuOptions;
     }
