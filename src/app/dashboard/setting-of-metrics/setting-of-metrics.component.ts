@@ -27,7 +27,7 @@ export class SettingOfMetricsComponent implements OnInit {
         if( viewType === 'automated_tasks') {
           viewType = 'automated-tasks';
           (viewType) && this.router.navigateByUrl(
-            `/dashboard/automated-tasks`
+            `/dashboard/automated-tasks/${element.type}`
           )
         } else {
           (viewType) && this.router.navigateByUrl(

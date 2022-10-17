@@ -16,6 +16,9 @@ import { AdmNotificationsComponent } from './setting-of-metrics/adm-notification
 import { AdmFormAlertComponent } from './setting-of-metrics/adm-alerts/adm-form-alert/adm-form-alert.component';
 import { AdmFormNotificationComponent } from './setting-of-metrics/adm-notifications/adm-form-notification/adm-form-notification.component';
 import { AutomatedTasksComponent } from './automated-tasks/automated-tasks.component';
+import { AtTypesComponent } from './automated-tasks/at-types/at-types.component';
+import { AtManualProcessComponent } from './automated-tasks/at-manual-process/at-manual-process.component';
+import { AtAutoProcessComponent } from './automated-tasks/at-auto-process/at-auto-process.component';
 
 @NgModule({
   declarations: [ 
@@ -30,6 +33,9 @@ import { AutomatedTasksComponent } from './automated-tasks/automated-tasks.compo
     AdmFormAlertComponent, 
     AdmFormNotificationComponent, 
     AutomatedTasksComponent, 
+    AtTypesComponent, 
+    AtManualProcessComponent, 
+    AtAutoProcessComponent
   ],
   imports: [ 
     CommonModule, 

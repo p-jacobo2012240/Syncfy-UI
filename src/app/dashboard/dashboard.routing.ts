@@ -10,6 +10,7 @@ import { MetricsComponent } from './metrics/metrics.component';
 import { AdmAlertsComponent } from './setting-of-metrics/adm-alerts/adm-alerts.component';
 import { AdmNotificationsComponent } from './setting-of-metrics/adm-notifications/adm-notifications.component';
 import { AutomatedTasksComponent } from './automated-tasks/automated-tasks.component';
+import { AtTypesComponent } from './automated-tasks/at-types/at-types.component';
 
 const dashboardRoutes: Routes = [
     { 
@@ -21,8 +22,14 @@ const dashboardRoutes: Routes = [
                 component: MetricsComponent
             },
             {
-                path: 'automated-tasks',
-                component: AutomatedTasksComponent
+                path: 'automated-tasks/:type',
+                component: AutomatedTasksComponent,
+                children: [
+                    {
+                        path: '',
+                        component: AtTypesComponent
+                    }
+                ]
             },
             { 
                 path: 'metrics-settings/:type', 
