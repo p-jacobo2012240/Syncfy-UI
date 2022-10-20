@@ -7,7 +7,6 @@ import { AdmFormAlertComponent } from './adm-form-alert/adm-form-alert.component
 import { AuthDomain } from 'src/app/core/metrics/domains/auth.domain';
 import { AlertCreatorDomain } from 'src/app/core/metrics/domains/alert-creator.domain';
 
-
 @Component({
   selector: 'app-adm-alerts',
   templateUrl: './adm-alerts.component.html',

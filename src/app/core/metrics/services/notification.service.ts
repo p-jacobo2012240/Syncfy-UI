@@ -32,7 +32,7 @@ export class NotificationService {
       );
   }
 
-  newAlert(notificationCreator: NotificationCreatorDomain) : void {
+  newNotification(notificationCreator: NotificationCreatorDomain) : void {
     this.httpClient.post(`${this.API_URL}:${this.PORT}/metrics/notification/new-notification`, 
       notificationCreator, { headers: this.httpHeaders })
       .pipe(
@@ -41,8 +41,8 @@ export class NotificationService {
       ).subscribe(); 
   }
 
-  deleteAlert(alertId: Number) : void {
-    this.httpClient.delete(`${this.API_URL}:${this.PORT}/metrics/notification//${alertId}`)
+  deleteNotification(alertId: Number) : void {
+    this.httpClient.delete(`${this.API_URL}:${this.PORT}/metrics/notification/${alertId}`)
     .subscribe();
   }
 
