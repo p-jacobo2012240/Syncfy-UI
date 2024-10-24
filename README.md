@@ -13,7 +13,7 @@ Syncfy was born as a tracking measure for a large volume of documents. Normally 
 
 ![Syncfy Base Diagram](https://raw.githubusercontent.com/p-jacobo2012240/Syncfy-UI/feature/keycloack-migration/src/assets/diagrams/syncfy-base-diagram.png)
 
-# Syncfyui
+# Tech aspects
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
 
