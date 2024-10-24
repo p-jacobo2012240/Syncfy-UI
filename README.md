@@ -11,7 +11,7 @@ Syncfy was born as a tracking measure for a large volume of documents. Normally 
 
 ## How it works
 
-![Alt text](./assets/diagrams/syncfy-base-diagram.png)
+![Syncfy Base Diagram](https://raw.githubusercontent.com/p-jacobo2012240/Syncfy-UI/feature/keycloack-migration/src/assets/diagrams/syncfy-base-diagram.png)
 
 # Syncfyui
 
