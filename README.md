@@ -2,7 +2,7 @@
 
 Syncfy was born as a tracking measure for a large volume of documents. Normally we have ftp servers that upload the files from the initial origin to the cloud, but syncfy provides a set of tools for file tracking, scalability infrastructure, observers for configured alerts and different channels to manage files in AWS S3 and spaces in Digital Ocean in one place.
 
-## Motivations
+## Features
 
 - Cloud Native infrastructure
 - CQRS pattern for handling of events
@@ -12,6 +12,16 @@ Syncfy was born as a tracking measure for a large volume of documents. Normally 
 ## How it works
 
 ![Syncfy Base Diagram](https://raw.githubusercontent.com/p-jacobo2012240/Syncfy-UI/feature/keycloack-migration/src/assets/diagrams/syncfy-base-diagram.png)
+
+## Components
+
+Below its describe the three components of the core. that work since the auth till the handle of keys of  buckets or storages in the clouds previously mentioned.
+
+| Component | Repository |
+| ------ | -------- |
+| Agent | https://github.com/p-jacobo2012240/Syncfy-UI |
+| Kafka  | https://github.com/p-jacobo2012240/syncfy-management
+| Real time engine | https://github.com/p-jacobo2012240/Syncfy-engine-realtime |
 
 # Tech aspects
 
