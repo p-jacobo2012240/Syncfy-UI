@@ -2,7 +2,7 @@
  * The purpose of a login callback component is to handle the OAuth2 authorization callback—the redirect 
  * back to your application after a successful login with the OAuth provider. Here’s why it’s useful in this context
  * 
- * Configure a auth.config.ts = directUri: window.location.origin + '/login-callback',
+ * Configure auth.config.ts = directUri: window.location.origin + '/login-callback',
  * 
  * Why Use loadDiscoveryDocumentAndTryLogin(): This method is essential for processing the callback from the identity provider. 
  * It checks for an authorization code or token in the URL, validates it, and exchanges it for tokens as necessary.
@@ -32,7 +32,12 @@ export class LoginCallbackComponent implements OnInit {
         console.log('Access token is valid.');
         this.router.navigate(['/dashboard']);  
       } else {
-        window.location.reload(); // approach cause angular-oauth2-oidc
+        /**
+         * i use this approach cause the version angular-oauth2-oidc": "^14.0.1" 
+         * have a issue in the native refresh token function
+         */
+
+        window.location.reload(); // TEMP ( the logOut have a issue for this )
       }
     }).catch(err => {
       console.error('Error during discovery or login:', err);

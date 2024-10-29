@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthDomain, AuthDtoPayloadDomain } from '../domains/auth.domain';
@@ -7,6 +7,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { environment } from '../../../../environments/environment';
 import { AuthCreator } from '../domains/auth-creator.domain';
 import { Router } from '@angular/router';
+import { AuthKeycloackClaim } from '../domains/auth-claims.domain';
 
 
 @Injectable({
@@ -24,8 +25,9 @@ export class AuthValidateService {
     private router: Router
   ) { }
   
-  checkIfExistOAuth(rawData: AuthDomain) : void {
+  checkIfExistOAuth(rawData: any) : void { AuthDomain
     
+    /*
     const { email } = rawData;
     let payload: AuthDtoPayloadDomain = { email: email}
     
@@ -43,7 +45,8 @@ export class AuthValidateService {
         } else {
           localStorage.setItem('oauth', JSON.stringify(authDomain))
         }
-      });
+      }); */
+
   }
 
   newOAuthRegister(authDomain: AuthDomain) : void {
@@ -70,5 +73,9 @@ export class AuthValidateService {
 
   get isLoggedIn(): boolean {
     return this.oAuthService.hasValidAccessToken();
+  }
+
+  identityClaims(): Observable<AuthKeycloackClaim> {
+    return of(this.oAuthService.getIdentityClaims());
   }
 }
