@@ -45,7 +45,7 @@ const dashboardRoutes: Routes = [
                 ]
             }
         ],
-        // canActivate: [ AuthGuard ]
+        canActivate: [ AuthGuard ]
     },
 ];
 

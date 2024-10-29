@@ -18,8 +18,4 @@ export class LoginComponent implements OnInit {
   SignIn() {
     this.authService.login();
   }
-
-  logOut() {
-    this.authService.logout();
-  }
 }
