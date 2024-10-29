@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 // Import the module from the SDK
-import { AuthModule as Auth0 } from '@auth0/auth0-angular';
+import { OAuthModule } from "angular-oauth2-oidc";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 
@@ -25,9 +25,11 @@ import { MaterialModule } from './material/material.module';
     AuthModule,
     DashboardModule, 
     RouterModule,
-    Auth0.forRoot({
-      domain: environment.auth0.domain,
-      clientId: environment.auth0.clientId
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: [ environment.keycloack.allowedUrl ],
+        sendAccessToken: true
+      }
     }),
     BrowserAnimationsModule,
     MaterialModule

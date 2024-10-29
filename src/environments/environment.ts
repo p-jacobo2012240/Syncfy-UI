@@ -4,9 +4,17 @@
 
 export const environment = {
   production: true,
-  auth0: {
-    domain: 'quinx2.auth0.com',
-    clientId: 'V5Wrt8I5aUkWvDWm4kIeOPW508mH4bNX'
+  keycloack: {
+    allowedUrl: 'http://localhost:8081/auth',
+    authConfiguration: {
+      issuer: 'http://localhost:8080/realms/oauth2-syncfy-realm',
+      directUri: window.location.origin + '/login-callback',
+      clientId: 'syncfy-id',
+      responseType: 'code',
+      strictDiscoveryDocumentValidation: false,
+      scope: 'openid profile email offline_access',
+      requireHttps: false
+    }
   },
   syncfyManagement: {
     apiURL: 'http://localhost',

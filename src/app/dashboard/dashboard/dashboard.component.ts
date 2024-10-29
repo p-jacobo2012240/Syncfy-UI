@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+// import { AuthService } from '@auth0/auth0-angular';
 import { AuthValidateService } from '../../core/metrics/services/auth.service';
 import { Router } from '@angular/router';
 import { menuOptions, SideMenu } from '../dashboard-utils';
@@ -12,6 +12,7 @@ import { AuthDomain, AuthDtoPayloadDomain } from 'src/app/core/metrics/domains/a
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  
   public mobileQuery: MediaQueryList;
   public fillerNav: SideMenu[] = []; 
   private authDomain: AuthDomain = new AuthDomain();
@@ -19,7 +20,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
 
   constructor(
-    public auth: AuthService, 
+    // public auth: AuthService, 
     private router: Router,
     public changeDetectorRef: ChangeDetectorRef, 
     public media: MediaMatcher,
@@ -31,7 +32,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if(this.auth.isAuthenticated$) {
+      console.log('hastoken = {} ', this.authValidate.isLoggedIn);
+    /*  if(this.auth.isAuthenticated$) {
       this.auth.idTokenClaims$.subscribe((claims) => {
         console.log('success logged!') 
         
@@ -45,7 +47,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.authValidate.checkIfExistOAuth(this.authDomain); 
       });
       this.fillerNav = menuOptions;
-    }
+    } */
   }
 
   ngOnDestroy(): void {
@@ -54,7 +56,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   LogOut() {
     localStorage.removeItem('oauth')
-    this.auth.logout();
+    //this.auth.logout();
     this.router.navigateByUrl('/');
   }
 
