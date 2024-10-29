@@ -4,13 +4,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { SettingOfMetricsComponent } from './setting-of-metrics/setting-of-metrics.component';
 
-// Import the authentication guard
-import { AuthGuard } from '@auth0/auth0-angular';
 import { MetricsComponent } from './metrics/metrics.component';
 import { AdmAlertsComponent } from './setting-of-metrics/adm-alerts/adm-alerts.component';
 import { AdmNotificationsComponent } from './setting-of-metrics/adm-notifications/adm-notifications.component';
 import { AutomatedTasksComponent } from './automated-tasks/automated-tasks.component';
 import { AtTypesComponent } from './automated-tasks/at-types/at-types.component';
+import { AuthGuard } from '../core/auth.guard';
 
 const dashboardRoutes: Routes = [
     { 
@@ -46,7 +45,7 @@ const dashboardRoutes: Routes = [
                 ]
             }
         ],
-        canActivate: [ AuthGuard ]
+        // canActivate: [ AuthGuard ]
     },
 ];
 

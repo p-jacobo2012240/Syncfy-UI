@@ -3,8 +3,10 @@ import { throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthDomain, AuthDtoPayloadDomain } from '../domains/auth.domain';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { environment } from '../../../../environments/environment';
 import { AuthCreator } from '../domains/auth-creator.domain';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -17,7 +19,9 @@ export class AuthValidateService {
   readonly httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private oAuthService: OAuthService,
+    private router: Router
   ) { }
   
   checkIfExistOAuth(rawData: AuthDomain) : void {
@@ -55,6 +59,16 @@ export class AuthValidateService {
         localStorage.setItem('oauth', JSON.stringify(authDomain))
       });
   }
-  
 
+  login() {
+    this.oAuthService.initCodeFlow(); 
+  }
+
+  logout() {
+    this.oAuthService.logOut();
+  }
+
+  get isLoggedIn(): boolean {
+    return this.oAuthService.hasValidAccessToken();
+  }
 }

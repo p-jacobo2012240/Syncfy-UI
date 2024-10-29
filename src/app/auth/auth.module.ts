@@ -4,9 +4,13 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { MaterialModule } from '../material/material.module';
+import { LoginCallbackComponent } from './login-callback/login-callback.component';
 
 @NgModule({
-  declarations: [LoginComponent ],
+  declarations: [
+    LoginComponent, 
+    LoginCallbackComponent 
+  ],
   imports: [
     CommonModule,
     DashboardModule,
