@@ -1,11 +1,10 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { AuthValidateService } from '../../core/metrics/services/auth.service';
-import { Router } from '@angular/router';
 import { menuOptions, SideMenu } from '../dashboard-utils';
-// import { AuthDomain, AuthDtoPayloadDomain } from 'src/app/core/metrics/domains/auth.domain';
-import { Observable } from 'rxjs';
-import { AuthKeycloackClaim } from 'src/app/core/metrics/domains/auth-claims.domain';
+import { filter, Observable } from 'rxjs';
+import { AuthClaim } from 'src/app/core/metrics/domains/auth-claims.domain';
+import { UserInfoService } from 'src/app/core/metrics/services/user-info.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,14 +15,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   
   public mobileQuery: MediaQueryList;
   public fillerNav: SideMenu[] = []; 
-  public authClaims$?: Observable<AuthKeycloackClaim>;
+  public authClaims$?: Observable<AuthClaim>;
   private _mobileQueryListener: () => void;
 
   constructor(
-    private router: Router,
     public changeDetectorRef: ChangeDetectorRef, 
     public media: MediaMatcher,
-    private authService: AuthValidateService
+    private authService: AuthValidateService,
+    private userInfoService: UserInfoService
   ) { 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -31,16 +30,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.authClaims$ = this.authService.identityClaims();
+    this.authService.isAuthenticated$
+      .pipe(
+        filter((isAuthenticated) => isAuthenticated))
+          .subscribe(() => {
+            this.authClaims$ = this.authService.identityClaims();
 
-    if(this.authService.isLoggedIn) {
-      
-      this.authService
-        .identityClaims()
-        .subscribe((claims) =>  this.authService.checkIfExistOAuth(claims));
-      
-        this.fillerNav = menuOptions;
-    }
+            if(this.authService.isLoggedIn) { 
+              this.userInfoService
+                .checkIfExistOAuth(this.authClaims$);
+            }
+         });
+
+    this.fillerNav = menuOptions;
   }
 
   ngOnDestroy(): void {
@@ -48,9 +50,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   LogOut() {
-    localStorage.removeItem('oauth')
     this.authService.logout();
-    this.router.navigateByUrl('/authentication');
   }
-
 }

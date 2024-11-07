@@ -1,4 +1,4 @@
-export interface AuthKeycloackClaim {
+export interface AuthClaim {
     acr?: string;
     at_hash?: string;
     aud?: string;
@@ -18,5 +18,5 @@ export interface AuthKeycloackClaim {
     sid?: string;
     sub?: string;
     typ?: string;
-
+    roles?: string[];
 }

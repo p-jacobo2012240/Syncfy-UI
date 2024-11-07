@@ -1,4 +1,4 @@
-import { AuthDomain } from "./auth.domain";
+import { AuthClaim } from "./auth-claims.domain";
 
 export interface AlertDomain {
     id: Number;
@@ -7,5 +7,5 @@ export interface AlertDomain {
     expiryDate: Date,
     type: string;
     isValidForFilter: boolean;
-    auth: AuthDomain
+    auth: AuthClaim
 }

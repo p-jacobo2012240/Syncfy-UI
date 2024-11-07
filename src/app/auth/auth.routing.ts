@@ -10,7 +10,7 @@ const authRoutes: Routes = [
     },
     {
         path: 'login-callback',
-        component: LoginCallbackComponent
+        component: LoginCallbackComponent,
     }
 ];
 
