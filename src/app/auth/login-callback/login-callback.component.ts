@@ -13,7 +13,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { AuthValidateService } from '../../core/metrics/services/auth.service';
 
 @Component({
   selector: 'app-login-callback',
@@ -22,26 +22,24 @@ import { OAuthService } from 'angular-oauth2-oidc';
 export class LoginCallbackComponent implements OnInit {
 
   constructor(
-    private oAuthService: OAuthService,
+    private authService: AuthValidateService,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(loggedIn => {
-      if (loggedIn && this.oAuthService.hasValidAccessToken()) {
+  async ngOnInit() {
+    try {
+      await this.authService.loadDiscoveryDocument();
+  
+      if (this.authService.hasValidToken()) {
         console.log('Access token is valid.');
-        this.router.navigate(['/dashboard']);  
+        this.router.navigate(['/dashboard']);
       } else {
-        /**
-         * i use this approach cause the version angular-oauth2-oidc": "^14.0.1" 
-         * have a issue in the native refresh token function
-         */
-
-        window.location.reload(); // TEMP ( the logOut have a issue for this )
+        // Redirect to login if not logged in or token is invalid
+        this.authService.login();
       }
-    }).catch(err => {
+    } catch (err) {
       console.error('Error during discovery or login:', err);
       this.router.navigate(['/authentication']);
-    });
+    }
   }
 }
