@@ -3,6 +3,7 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 import { AuthClaim } from '../domains/auth-claims.domain';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserInfo } from '../domains/auth.domain';
 
 @Injectable({
   providedIn: 'root'
@@ -17,26 +18,20 @@ export class UserInfoService {
     private httpClient: HttpClient
   ) { }
 
-  checkIfExistOAuth(claims: Observable<AuthClaim>) : void { 
-    claims.subscribe((claim) => {
-      const { sub, email, name, roles } = claim;
+  checkIfExistOAuth(claims: AuthClaim) : void { 
+    const { sub } = claims;
 
-      const payload = { 
-        keycloak_user_id: sub,
-        email: email,
-        username: name,
-        roles:  roles || []
-       }
-      
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+    this.httpClient.get("http://localhost:8081/resource/hello",
+      {headers, responseType: 'text'}).subscribe(() => console.log('results') )
+
+    /*
       const OAuth = this.httpClient
-      .post(`${this.API_URL}:${this.PORT}/auth/check-auth`, payload, { headers: this.httpHeaders })
-      .pipe( 
-        map((response: any) => response as AuthClaim),
-        catchError(e => throwError(() => e))
-      );
-    });
-    
-  
+        .post(`${this.API_URL}:${this.PORT}/resource/check-auth`, { authId: sub }, { headers: this.httpHeaders })
+        .pipe( 
+          map((response: any) => response as UserInfo),
+            catchError(e => throwError(() => e))
+        );*/    
 
     /*
     const { email } = rawData;

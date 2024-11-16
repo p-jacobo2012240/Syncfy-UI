@@ -2,7 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { AuthValidateService } from '../../core/metrics/services/auth.service';
 import { menuOptions, SideMenu } from '../dashboard-utils';
-import { filter, Observable } from 'rxjs';
+import { filter, Observable, pipe, switchMap, take, tap } from 'rxjs';
 import { AuthClaim } from 'src/app/core/metrics/domains/auth-claims.domain';
 import { UserInfoService } from 'src/app/core/metrics/services/user-info.service';
 
@@ -30,18 +30,18 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.authService.isAuthenticated$
+    this.authClaims$ = this.authService.isAuthenticated$
       .pipe(
-        filter((isAuthenticated) => isAuthenticated))
-          .subscribe(() => {
-            this.authClaims$ = this.authService.identityClaims();
-
-            if(this.authService.isLoggedIn) { 
-              this.userInfoService
-                .checkIfExistOAuth(this.authClaims$);
-            }
-         });
-
+        filter(isAuthenticated => isAuthenticated),
+        take(2),
+        switchMap(() => this.authService.identityClaims()),
+        tap(claims => {
+          if (claims) {
+            this.userInfoService.checkIfExistOAuth(claims);
+          }
+        })
+    );
+    
     this.fillerNav = menuOptions;
   }
 
