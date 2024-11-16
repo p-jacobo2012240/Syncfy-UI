@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
 import { AuthClaim } from '../domains/auth-claims.domain';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +61,9 @@ export class AuthValidateService {
   }
 
   public identityClaims(): Observable<AuthClaim> {
-    return of(this.oAuthService.getIdentityClaims());
+    return of(this.oAuthService.getIdentityClaims()).pipe(
+      map(claims => claims as AuthClaim)
+    );
   }
     
   public hasValidToken(): boolean  { 

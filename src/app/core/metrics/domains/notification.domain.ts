@@ -7,5 +7,5 @@ export interface NotificationDomain {
     expiryDate: Date,
     type: string;
     isValidForFilter: boolean;
-    auth: AuthClaim
+    auth: AuthClaim;
 }
